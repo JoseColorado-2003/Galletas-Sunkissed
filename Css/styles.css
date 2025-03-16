@@ -1,0 +1,178 @@
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F5E1C8;
+    background-image: url('../Imagenes/Background.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #E6C7A1;
+}
+
+.logo {
+    width: 150px;
+}
+
+.nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #7B4E29;
+    font-weight: bold;
+}
+
+/* Sección Principal (Hero) */
+.hero {
+    position: relative;
+    text-align: center;
+    padding: 50px 0;
+}
+
+.hero-background img {
+    width: 100%;
+    display: block;
+}
+
+.header .button {
+    position: static;  /* Elimina el posicionamiento absoluto */
+    margin-left: auto; /* Lo alinea a la derecha */
+    padding: 10px 20px;
+    background-color: #D2A679;
+    color: #7B4E29;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Ajuste del Botón en la Promo */
+.button {
+    position: absolute;
+    top: 85%; /* Ajustado para que esté alineado con la imagen */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #D2A679;
+    color: #7B4E29;
+    font-weight: bold;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.button:hover {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    transform: translate(-50%, -45%);
+}
+
+/* Quiénes Somos */
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 50px;
+    background-color: #FAE0C3;
+}
+
+.about-container {
+    position: relative; /* Para que los elementos absolutamente posicionados se basen en este contenedor */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Fondos de vectores */
+.about-image {
+    position: relative;
+    margin-right: 30px;
+    width: 300px;
+    height: 250px;
+}
+
+.about-image .vector1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-image .vector1 img {
+    width: 80%;
+    border-radius: 10px;
+}
+
+.about-text {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 20px;
+}
+
+.about-text .vector2 {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 120%;
+    z-index: -1;
+}
+
+.about-logo {
+    width: 180px;
+    display: block;
+    margin: 0 auto;
+}
+
+.about-text p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px;
+    background-color: #E6C7A1;
+    text-align: center;
+}
+
+.footer-logo {
+    width: 120px;
+}
+
+.footer-section h3 {
+    margin-bottom: 10px;
+}
+
+.footer-section a {
+    display: block;
+    text-decoration: none;
+    color: #7B4E29;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
