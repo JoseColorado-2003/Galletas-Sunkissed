@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: url('../Imagenes/Background2.svg') no-repeat center center fixed;
+    background-size: cover;
+    background-color: rgb(255, 223, 200);
+  }
+  
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-box {
+    background-color: rgb(255, 223, 200);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 320px;
+    text-align: center;
+  }
+  
+  .logo {
+    width: 130px;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    color: #7B4E29;
+  }
+  
+  form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #d9a88a;
+    border-radius: 8px;
+    background-color: rgb(255, 223, 200);
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+  
+  .buttons button {
+    flex: 1;
+    margin: 0 5px;
+    padding: 10px;
+    background-color: #d9a88a;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .buttons button:hover {
+    background-color: #7B4E29;
+  }
+  
+  .google-login {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    cursor: pointer;
+  }
+  
+  .google-login img {
+    width: 20px;
+    margin-right: 10px;
+  }
+  
