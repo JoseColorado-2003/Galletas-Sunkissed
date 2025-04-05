@@ -10,6 +10,7 @@ body {
     background-repeat: no-repeat;
 }
 
+/* Header */
 .header {
     display: flex;
     justify-content: space-between;
@@ -31,36 +32,53 @@ body {
 
 /* Sección Principal (Hero) */
 .hero {
-    position: relative;
-    text-align: center;
-    padding: 50px 0;
+    position: relative; /* Asegura que los elementos internos usen esta referencia */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    overflow: hidden;
 }
 
+ h3{
+    margin: 0 15px;
+    text-decoration: none;
+    color: #7B4E29;
+    font-weight: bold;
+}
+p{
+    margin: 20px 15px;
+    text-decoration: none;
+    color: #7B4E29;
+    font-weight: semi-bold;
+}
 .hero-background img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    display: block;
+    height: 100%;
+    object-fit: cover; /* Esto hace que cubra toda el área sin deformarse */
 }
 
-.header .button {
-    position: static;  /* Elimina el posicionamiento absoluto */
-    margin-left: auto; /* Lo alinea a la derecha */
-    padding: 10px 20px;
+.hero button {
+    position: absolute;
+    bottom: 10%; /* Ajusta la distancia desde la parte inferior */
+    left: 50%;
+    transform: translateX(-50%); /* Centra exactamente el botón */
+    padding: 12px 24px;
     background-color: #D2A679;
     color: #7B4E29;
     font-weight: bold;
     border: none;
     border-radius: 20px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
     cursor: pointer;
 }
 
 /* Ajuste del Botón en la Promo */
 .button {
-    position: absolute;
-    top: 85%; /* Ajustado para que esté alineado con la imagen */
-    left: 50%;
-    transform: translate(-50%, -50%);
     background-color: #D2A679;
     color: #7B4E29;
     font-weight: bold;
@@ -71,10 +89,13 @@ body {
     transition: all 0.3s ease;
     cursor: pointer;
 }
-
+.hero button {
+    display: block;
+    z-index: 1;
+    margin: 20px auto 0 auto; /* top, horizontal, bottom, horizontal */
+}
 .button:hover {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
-    transform: translate(-50%, -45%);
 }
 
 /* Quiénes Somos */
@@ -84,67 +105,159 @@ body {
     align-items: center;
     position: relative;
     padding: 50px;
-    background-color: #FAE0C3;
 }
 
 .about-container {
-    position: relative; /* Para que los elementos absolutamente posicionados se basen en este contenedor */
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    justify-content: space-evenly;
+    width: 100%;
+    max-width: 1200px; /* Limita para que no se abra demasiado */
+    margin: 0 auto;
+    padding: 150px 50px; /* Controla espacio lateral del contenedor */
 }
 
-/* Fondos de vectores */
+
+/* Imagen de las galletas */
 .about-image {
     position: relative;
-    margin-right: 30px;
-    width: 300px;
-    height: 250px;
-}
-
-.about-image .vector1 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    width: 300px; /* Ajusta según necesites */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.about-image .vector1 img {
-    width: 80%;
-    border-radius: 10px;
+.about-image .background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%; 
+    z-index: 1;
 }
 
+.about-image .cookies-img {
+    position: relative;
+    width: 60%; /* 🔽 Tamaño ajustado */
+    z-index: 2;
+}
+
+/* Texto */
 .about-text {
     position: relative;
     z-index: 1;
     text-align: center;
     padding: 20px;
+    max-width: 600px;
 }
 
-.about-text .vector2 {
+.about-text .background-text {
     position: absolute;
-    top: -20px;
+    top: -80px;
     left: 50%;
     transform: translateX(-50%);
     width: 120%;
-    height: 120%;
+    height: 180%;
     z-index: -1;
 }
 
 .about-logo {
-    width: 180px;
+    width: 200px;
     display: block;
     margin: 0 auto;
 }
 
 .about-text p {
-    font-size: 18px;
-    line-height: 1.5;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Sección "¿Cuál es tu tipo de cookie?" */
+.cookies-section {
+    width: auto;
+    height: 600px;
+    text-align: center;
+    background-color: #9C6B43;
+    padding: 20px 20px;
+}
+
+.cookies-section h2 {
+    font-size: 30px;
+    color: #ffffff;
+    text-align: center;
+}
+.cookie-content p {
+    color: #FDD7B0; /* Marrón oscuro del diseño */
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-weight: 500;
+    text-align: center;
+    border-color: b;
+}
+
+.cookies-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Alinea los items al centro */
+    gap: 40px; /* Espacio entre elementos */
+    flex-wrap: wrap; /* Permite que los elementos se acomoden en varias líneas si no caben */
+}
+
+.cookie-item {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 100px; /* 👉 Esto agrega espacio horizontal entre los items */
+}
+
+
+.cookie-background {
+    position: absolute;
+    background-color: #E6C7A1;
+    top: 0;
+    width:400px;
+    height: 500px;
+    z-index: 1;
+    border-radius: 5%;
+}
+
+.cookie-img {
+    height: auto;
+    position: absolute; /* Permite ajustar la posición */
+    top: 120%; /* Mueve la imagen al 50% de la altura */
+    left: 50%; /* Mueve la imagen al 50% del ancho */
+    transform: translate(-50%, -50%); /* Centra exactamente la imagen */
+    z-index: 2; /* Asegura que la imagen esté por encima del fondo */
+}
+
+
+.cookie-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fondo opaco */
+    display: none; /* OCULTA AL INICIO */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.cookie-content {
+    background: #9C6B43;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 500px;
+    color: white;
+      border: 4px solid #B59176; /* usa el mismo color que el texto, o cambia a otro si prefieres */
+    border-radius: 20px;       /* opcional: suaviza las esquinas */
+    padding: 20px;             /* espacio interno */
 }
 
 /* Footer */
@@ -158,7 +271,7 @@ body {
 }
 
 .footer-logo {
-    width: 120px;
+    width: 200px;
 }
 
 .footer-section h3 {

@@ -1,0 +1,155 @@
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FDE9D6; /* Ajustado según imagen */
+    background-image: url('../Imagenes/Background2.svg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Contenedor principal del perfil */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Tarjeta de perfil */
+.profile-card {
+    background: #EFD8B1; /* Ajustado según imagen */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px rgba(122, 72, 32, 0.2); /* Color más cálido */
+    text-align: center;
+    width: 60%;
+    max-width: 800px;
+    position: relative;
+}
+
+/* Logo Sunkissed */
+.profile-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.profile-logo img {
+    width: 180px; /* Ajustado para que no sea demasiado grande */
+}
+
+/* Contenedor principal del contenido */
+.profile-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Contenedor del icono de perfil */
+.profile-icon-container {
+    position: relative;
+    width: 120px; /* Reducido */
+    height: 120px;
+}
+
+/* Círculo de fondo para el icono de perfil */
+.circle-background {
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF; /* Ajustado según imagen */
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Icono de perfil */
+.profile-icon {
+    width: 50%;
+    position: relative;
+    z-index: 1;
+    top: 15px;
+}
+
+/* Caja de información del usuario */
+.profile-info {
+    background: #A2633C; /* Marrón cálido */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center; /* Centrar contenido */
+    flex-grow: 1;
+    color: #E5CBA4;
+}
+
+/* Estilos de texto */
+.profile-info h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: left; /* <-- Este es el nuevo */
+  }
+
+.profile-info p {
+    margin: 10px 0;
+    font-size: 18px;
+    display: flex;
+    justify-content: center; /* Centrar el texto */
+    align-items: center;
+    gap: 10px;
+}
+
+/* Botones */
+.profile-buttons {
+    display: flex;
+    justify-content: flex-end; /* Mover los botones a la derecha */
+    margin-top: 20px;
+    padding-top: 10px;
+}
+.info-line {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: right;
+    margin: 10px 0;
+    gap: 10px;
+  }
+
+  .info-line .label {
+    min-width: 80px;
+    font-weight: bold;
+    color: #E5CBA4;
+    text-align: right;
+  }
+
+  .info-line .value {
+    flex: 1;
+    text-align: center;
+    color: #E5CBA4;
+    font-weight: normal;
+  }  
+.button {
+    background-color: #EFD8B1;
+    color: #7B4E29;
+    font-weight: bold;
+    padding: 8px 18px; /* Reducir tamaño */
+    font-size: 14px; /* Reducir tamaño de texto */
+    border: 2px solid #7B4E29;
+    border-radius: 20px;
+    box-shadow: 0px 4px 6px rgba(123, 78, 41, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.button:hover {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
