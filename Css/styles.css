@@ -9,7 +9,10 @@ body {
     background-position: center;
     background-repeat: no-repeat;
 }
-
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 /* Header */
 .header {
     display: flex;
@@ -30,14 +33,13 @@ body {
     font-weight: bold;
 }
 
-/* Sección Principal (Hero) */
 .hero {
-    position: relative; /* Asegura que los elementos internos usen esta referencia */
+    position: relative; 
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
+    justify-content: center; 
+    align-items: center;
     overflow: hidden;
 }
 
@@ -287,3 +289,130 @@ p{
 .footer-section a:hover {
     text-decoration: underline;
 }
+/* === ESTILOS RESPONSIVOS PARA MÓVIL === */
+@media (max-width: 768px) {
+
+    .header {
+        width: 100%;
+        padding: 20px 0;
+        box-sizing: border-box;
+        flex-direction: column;
+        text-align: center;
+        background-color: #E6C7A1; /* o el color que uses */
+      }
+      /* === Ajustes individuales de imágenes === */
+    .promo-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    }
+    .about-text p {
+        font-size: 10px;
+    }
+    .about-image .background {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        z-index: 1;
+    }
+    .nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .hero {
+        flex-direction: column;
+        height: auto;
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .hero-background img {
+        width: 100%;
+        height: auto;
+    }
+
+    button .button {
+
+        max-width: 300px;
+        padding: 14px;
+        font-size: 16px;
+        margin: 10px auto;
+    }
+
+    .about {
+        padding: 20px;
+    }
+
+    .about-container {
+        flex-direction: column;
+        padding: 20px;
+        gap: 30px;
+    }
+
+    .about-image, .about-text {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .about-text .background-text {
+        width: 100%;
+        gap: 30px;
+    }
+
+    .cookies-section {
+        
+        height: 1100px;
+        padding: 30px 10px;
+    }
+
+    .cookies-container {
+        flex-direction: column;
+        gap: 120px;
+    }
+
+    .cookie-item {
+        margin: 0 auto;
+    }
+
+    .cookie-background {
+        width: 250px;
+        height: 300px;
+    }
+
+    .cookie-img {
+        top: 80%;
+        width: 80%;
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .footer-logo {
+        width: 150px;
+    }
+
+    .logo {
+        width: 120px;
+    }
+
+    .about-logo {
+        width: 140px;
+    }
+
+    .cookie-content {
+        width: 90%;
+    }
+}
+
+  
+  
+  
+  
