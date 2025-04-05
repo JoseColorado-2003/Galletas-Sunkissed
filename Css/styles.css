@@ -255,9 +255,7 @@ p{
     text-align: center;
     max-width: 500px;
     color: white;
-      border: 4px solid #B59176; /* usa el mismo color que el texto, o cambia a otro si prefieres */
-    border-radius: 20px;       /* opcional: suaviza las esquinas */
-    padding: 20px;             /* espacio interno */
+    
 }
 
 /* Footer */
