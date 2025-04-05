@@ -9,7 +9,10 @@ body {
     background-position: center;
     background-repeat: no-repeat;
 }
-
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 /* Header */
 .header {
     display: flex;
@@ -30,14 +33,13 @@ body {
     font-weight: bold;
 }
 
-/* Sección Principal (Hero) */
 .hero {
-    position: relative; /* Asegura que los elementos internos usen esta referencia */
+    position: relative; 
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
+    justify-content: center; 
+    align-items: center;
     overflow: hidden;
 }
 
@@ -172,92 +174,70 @@ p{
     line-height: 1.6;
 }
 
-/* Sección "¿Cuál es tu tipo de cookie?" */
-.cookies-section {
-    width: auto;
-    height: 600px;
-    text-align: center;
-    background-color: #9C6B43;
-    padding: 20px 20px;
-}
-
-.cookies-section h2 {
-    font-size: 30px;
-    color: #ffffff;
-    text-align: center;
-}
-.cookie-content p {
-    color: #FDD7B0; /* Marrón oscuro del diseño */
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 30px;
-    font-weight: 500;
-    text-align: center;
-    border-color: b;
-}
-
-.cookies-container {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Alinea los items al centro */
-    gap: 40px; /* Espacio entre elementos */
-    flex-wrap: wrap; /* Permite que los elementos se acomoden en varias líneas si no caben */
-}
-
-.cookie-item {
-    position: relative;
-    width: 200px;
-    height: 200px;
+/*Cookies*/
+.cookie-card {
+    width: 300px;
+    height: 360px;
+    background-image: url('../Imagenes/Background2.svg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 100px; /* 👉 Esto agrega espacio horizontal entre los items */
-}
-
-
-.cookie-background {
-    position: absolute;
-    background-color: #E6C7A1;
-    top: 0;
-    width:400px;
-    height: 500px;
-    z-index: 1;
-    border-radius: 5%;
-}
-
-.cookie-img {
-    height: auto;
-    position: absolute; /* Permite ajustar la posición */
-    top: 120%; /* Mueve la imagen al 50% de la altura */
-    left: 50%; /* Mueve la imagen al 50% del ancho */
-    transform: translate(-50%, -50%); /* Centra exactamente la imagen */
-    z-index: 2; /* Asegura que la imagen esté por encima del fondo */
-}
-
-
-.cookie-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
+  }
+  
+  .card-content {
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Fondo opaco */
-    display: none; /* OCULTA AL INICIO */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.cookie-content {
-    background: #9C6B43;
     padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .cookie-img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .description-box {
+    background-color: #F5E1C8;
+    padding: 10px;
     border-radius: 10px;
     text-align: center;
-    max-width: 500px;
+    color: #7B4E29;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-buttons {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .card-buttons button {
+    background-color: #7B4E29;
     color: white;
-    
-}
+    border: none;
+    padding: 8px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+  
+  .card-buttons button:hover {
+    background-color: #5c381c;
+  }
 
+  
 /* Footer */
 .footer {
     display: flex;
@@ -287,3 +267,130 @@ p{
 .footer-section a:hover {
     text-decoration: underline;
 }
+/* === ESTILOS RESPONSIVOS PARA MÓVIL === */
+@media (max-width: 768px) {
+
+    .header {
+        width: 100%;
+        padding: 20px 0;
+        box-sizing: border-box;
+        flex-direction: column;
+        text-align: center;
+        background-color: #E6C7A1; /* o el color que uses */
+      }
+      /* === Ajustes individuales de imágenes === */
+    .promo-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    }
+    .about-text p {
+        font-size: 10px;
+    }
+    .about-image .background {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        z-index: 1;
+    }
+    .nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .hero {
+        flex-direction: column;
+        height: auto;
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .hero-background img {
+        width: 100%;
+        height: auto;
+    }
+
+    button .button {
+
+        max-width: 300px;
+        padding: 14px;
+        font-size: 16px;
+        margin: 10px auto;
+    }
+
+    .about {
+        padding: 20px;
+    }
+
+    .about-container {
+        flex-direction: column;
+        padding: 20px;
+        gap: 30px;
+    }
+
+    .about-image, .about-text {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .about-text .background-text {
+        width: 100%;
+        gap: 30px;
+    }
+
+    .cookies-section {
+        
+        height: 1100px;
+        padding: 30px 10px;
+    }
+
+    .cookies-container {
+        flex-direction: column;
+        gap: 120px;
+    }
+
+    .cookie-item {
+        margin: 0 auto;
+    }
+
+    .cookie-background {
+        width: 250px;
+        height: 300px;
+    }
+
+    .cookie-img {
+        top: 80%;
+        width: 80%;
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .footer-logo {
+        width: 150px;
+    }
+
+    .logo {
+        width: 120px;
+    }
+
+    .about-logo {
+        width: 140px;
+    }
+
+    .cookie-content {
+        width: 90%;
+    }
+}
+
+  
+  
+  
+  
