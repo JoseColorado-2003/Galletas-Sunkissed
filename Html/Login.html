@@ -12,9 +12,9 @@
       <img src="../Imagenes/Group (1).svg" alt="Sunkissed Logo" class="logo" />
       <h2>Login</h2>
 
-      <form>
-        <input type="text" placeholder="Usuario" required />
-        <input type="password" placeholder="Contraseña" required />
+      <form id="loginForm">
+        <input type="text" id="usuario" placeholder="Usuario" required />
+        <input type="password" id="contrasena" placeholder="Contraseña" required />
         <div class="buttons">
           <button type="button">Registrarse</button>
           <button type="submit">Entrar</button>
@@ -27,5 +27,25 @@
       </div>
     </div>
   </div>
+
+
+
+  <script>
+  document.getElementById('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault(); // Evita el envío tradicional del formulario
+
+    const usuario = document.getElementById('usuario').value;
+    const contrasena = document.getElementById('contrasena').value;
+
+    // Usuario especial que redirige a otra página
+    if (usuario === 'admin' && contrasena === '1234') {
+      window.location.href = '../Html/Admin.html'; // Página especial
+    } else {
+      window.location.href = '../Html/Main.html'; // Página normal para todos
+    }
+  });
+</script>
+
+
 </body>
 </html>

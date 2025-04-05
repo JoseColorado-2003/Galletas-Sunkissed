@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F5E1C8;
+    color: #7B4E29;
+  }
+  
+  .admin-container {
+    padding: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .admin-logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  
+  .admin-logo img {
+    width: 20%; /* Ajustable: usa % para que sea proporcional */
+    max-width: 200px;
+    min-width: 100px;
+    height: auto;
+    opacity: 0.8;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #7B4E29;
+    margin-bottom: 30px;
+  }
+  
+  .admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #FFF5E0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .admin-table th,
+  .admin-table td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #E6C7A1;
+  }
+  
+  .admin-table th {
+    background-color: #E6C7A1;
+    color: #7B4E29;
+    font-size: 16px;
+  }
+  
+  .admin-table td[contenteditable="true"] {
+    background-color: #fff8ee;
+    outline: none;
+    cursor: text;
+  }
+  
+  .edit-btn {
+    background-color: #D2A679;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-btn:hover {
+    background-color: #bb8b5f;
+  }
+  
