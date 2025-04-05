@@ -5,6 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Perfil - Sunkissed</title>
   <link rel="stylesheet" href="../Css/stylesperfil.css" />
+  <style>
+    .profile-history {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 20px 0;
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      margin-top: 20px;
+    }
+
+    .profile-history p {
+      margin: 0;
+      font-weight: bold;
+      color: #7B4E29;
+      font-size: 18px;
+    }
+  </style>
 </head>
 <body>
 
@@ -25,21 +44,22 @@
           <img src="../Imagenes/Vectorfondo.svg" alt="Icono de perfil" class="profile-icon" />
         </div>
 
-        <!-- Información del usuario -->
+        <!-- Información del usuario + Historial -->
         <div class="profile-info">
-            <h2>Perfil</h2>
-            <div class="info-line">
-              <p class="label">Nombre:</p>
-              <p class="value">USUARIO</p>
-            </div>
-            <div class="info-line">
-              <p class="label">Correo:</p>
-              <p class="value">CORREO</p>
-            </div>
+          <h2>Perfil</h2>
+          <div class="info-line">
+            <p class="label">Nombre:</p>
+            <p class="value">USUARIO</p>
           </div>
-          
-          
-          
+          <div class="info-line">
+            <p class="label">Correo:</p>
+            <p class="value">CORREO</p>
+          </div>
+          <div class="info-line">
+            <p class="label">Historial de compra</p>
+            <p class="value">⋯</p>
+          </div>
+        </div>
 
       </div>
 
