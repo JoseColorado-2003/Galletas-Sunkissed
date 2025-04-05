@@ -1,33 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - Sunkissed</title>
-    <link rel="stylesheet" href="../Css/styleslogin.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inika&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="../Css/styleslogin.css" />
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-card">
-            <div class="login-logo">
-                <img src="../Imagenes/Group (1).svg" alt="Sunkissed Logo" />
-            </div>
-            <h2 class="login-title">Login</h2>
-            <form>
-                <input type="email" placeholder="Correo" required />
-                <input type="password" placeholder="Contraseña" required />
-                <div class="login-buttons">
-                    <button class="button">Regresar</button>
-                    <button class="button">Iniciar sesión</button>
-                </div>
-                <div class="google-login">
-                    <button class="google-button">
-                        <img src="../Imagenes/icongoogle.svg" alt="Google" /> Continuar con Google
-                    </button>
-                </div>
-            </form>
+  <div class="login-container">
+    <div class="login-box">
+      <img src="../Imagenes/Group (1).svg" alt="Sunkissed Logo" class="logo" />
+      <h2>Login</h2>
+
+      <form>
+        <input type="text" placeholder="Usuario" required />
+        <input type="password" placeholder="Contraseña" required />
+        <div class="buttons">
+          <button type="button">Registrarse</button>
+          <button type="submit">Entrar</button>
         </div>
+      </form>
+
+      <div class="google-login">
+        <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google" />
+        <span>Continuar con Google</span>
+      </div>
     </div>
+  </div>
 </body>
 </html>
