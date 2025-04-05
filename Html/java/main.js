@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const cookiePopup = document.getElementById("cookieModal"); 
     const acceptButton = document.querySelector(".cookie-buttons .button:nth-child(2)");
     const declineButton = document.querySelector(".cookie-buttons .button:nth-child(1)");
+    const cookieCards = document.querySelectorAll('.cookie-card');
 
     console.log("cookiePopup:", cookiePopup);
     console.log("acceptButton:", acceptButton);
@@ -23,4 +24,15 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         console.error("❌ Uno o más elementos no se encontraron en el DOM.");
     }
+
+    cookieCards.forEach(card => {
+    card.addEventListener('click', function () {
+    cookieCards.forEach(otherCard => {
+    if (otherCard !== this) {
+        otherCard.classList.remove('expanded');
+    }
+    });
+    this.classList.toggle('expanded');
+    });
+    });
 });
