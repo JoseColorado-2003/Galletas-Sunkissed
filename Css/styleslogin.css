@@ -98,3 +98,36 @@ form input {
   width: 20px;
   margin-right: 10px;
 }
+
+/* 📱 MODO MÓVIL */
+@media screen and (max-width: 480px) {
+  .login-box {
+    width: 90%;
+    padding: 30px 20px;
+  }
+
+  form input {
+    width: auto;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+    width: auto;
+  }
+
+  .buttons button {
+    margin: 0;
+    width: auto;
+  }
+
+  .google-login {
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .google-login img {
+    margin-right: 0;
+  }
+}

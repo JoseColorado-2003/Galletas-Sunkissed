@@ -1,76 +1,131 @@
+/* Estilo general */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #F5E1C8;
-    color: #7B4E29;
-  }
-  
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #F5E1C8;
+  color: #7B4E29;
+}
+
+.admin-container {
+  padding: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  color: #7B4E29;
+  margin-bottom: 30px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 50px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.admin-table th {
+  background-color: #D2A679;
+  color: white;
+}
+
+.admin-table td[contenteditable="true"] {
+  background-color: #FFF5E1;
+  border: 1px dashed #D2A679;
+  border-radius: 4px;
+}
+
+.edit-btn {
+  background-color: #D2A679;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.edit-btn:hover {
+  background-color: #b7824a;
+}
+
+/* Logo al final */
+.admin-logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.admin-logo img {
+  max-width: 200px;
+  height: auto;
+}
+
+/* --- Modo Teléfono --- */
+@media screen and (max-width: 600px) {
   .admin-container {
-    padding: 40px;
-    max-width: 1000px;
-    margin: 0 auto;
+    padding: 20px;
   }
-  .admin-logo {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
+
+  .admin-table thead {
+    display: none;
   }
-  
-  .admin-logo img {
-    width: 20%; /* Ajustable: usa % para que sea proporcional */
-    max-width: 200px;
-    min-width: 100px;
-    height: auto;
-    opacity: 0.8;
-  }
-  
-  h1 {
-    text-align: center;
-    color: #7B4E29;
-    margin-bottom: 30px;
-  }
-  
-  .admin-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #FFF5E0;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
-  }
-  
-  .admin-table th,
+
+  .admin-table,
+  .admin-table tbody,
+  .admin-table tr,
   .admin-table td {
-    padding: 15px 20px;
+    display: block;
+    width: 100%;
+  }
+
+  .admin-table tr {
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: auto;
+  }
+
+  .admin-table td {
+    padding: 10px;
+    text-align: right;
+    position: relative;
+    width: auto;
+  }
+
+  .admin-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
     text-align: left;
-    border-bottom: 1px solid #E6C7A1;
-  }
-  
-  .admin-table th {
-    background-color: #E6C7A1;
-    color: #7B4E29;
-    font-size: 16px;
-  }
-  
-  .admin-table td[contenteditable="true"] {
-    background-color: #fff8ee;
-    outline: none;
-    cursor: text;
-  }
-  
-  .edit-btn {
-    background-color: #D2A679;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 20px;
     font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    color: #7B4E29;
   }
-  
-  .edit-btn:hover {
-    background-color: #bb8b5f;
+
+  .edit-btn {
+    width: 50%;
+    margin-top: 10px;
   }
-  
+  .acciones-header {
+    display: none !important;
+  }
+  .admin-logo img {
+    max-width: 150px;
+  }
+}
