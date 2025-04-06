@@ -4,11 +4,28 @@
   --color-negro: #000000;
   --color-blanco: #FFFFFF;
 }
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
+  padding: 20px;
   background-color: var(--color-secundario);
+  color: var(--color-primario);
+}
+
+.filtros {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filtros select {
+  padding: 8px 12px;
+  border: 1px solid var(--color-primario);
+  border-radius: 10px;
+  font-size: 14px;
   color: var(--color-primario);
 }
 
@@ -20,59 +37,78 @@ body {
 
 h1 {
   text-align: center;
-  color: #7B4E29;
   margin-bottom: 30px;
 }
 
 .admin-table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 50px;
-  background-color: #ffffff;
+  margin-bottom: 20px;
+  background-color: var(--color-secundario);
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px var(--color-primario);
 }
 
 .admin-table th,
 .admin-table td {
   padding: 12px 15px;
-  border-bottom: 1px solid #ddd;
-  text-align: left;
+  border-bottom: 1px solid var(--color-secundario);
+  text-align: center;
 }
 
 .admin-table th {
-  background-color: #D2A679;
-  color: white;
-}
-
-.admin-table td[contenteditable="true"] {
-  background-color: #FFF5E1;
-  border: 1px dashed #D2A679;
-  border-radius: 4px;
+  background-color: var(--color-primario);
+  color: var(--color-secundario);
 }
 
 .edit-btn {
-  background-color: #D2A679;
-  color: white;
+  background-color: var(--color-primario);
+  color: var(--color-secundario);
   border: none;
-  padding: 8px 14px;
+  padding: 6px 12px;
   border-radius: 20px;
   cursor: pointer;
-  font-weight: bold;
+  margin: 2px;
   transition: background-color 0.3s;
 }
 
 .edit-btn:hover {
-  background-color: #b7824a;
+  background-color: #895b3a;
 }
 
-/* Logo al final */
+.add-btn {
+  display: block;
+  margin: 10px auto 30px;
+  padding: 10px 16px;
+  background-color: var(--color-primario);
+  color: var(--color-secundario);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Nueva fila para botón debajo del historial */
+.add-btn-row td {
+  padding: 12px;
+  text-align: center;
+  background-color: var(--color-secundario);
+  border-top: 1px dashed var(--color-primario);
+}
+
+.add-btn-cell {
+  text-align: center;
+}
+
+.add-btn-row .add-btn {
+  margin: 10px auto;
+}
+
 .admin-logo {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 40px;
+  margin-top: 40px;
 }
 
 .admin-logo img {
@@ -80,7 +116,7 @@ h1 {
   height: auto;
 }
 
-/* --- Modo Teléfono --- */
+/* Responsive */
 @media screen and (max-width: 600px) {
   .admin-container {
     padding: 20px;
@@ -102,16 +138,14 @@ h1 {
     margin-bottom: 20px;
     background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px var(--color-primario);
     padding: 15px;
-    width: auto;
   }
 
   .admin-table td {
     padding: 10px;
     text-align: right;
     position: relative;
-    width: auto;
   }
 
   .admin-table td::before {
@@ -120,16 +154,23 @@ h1 {
     left: 10px;
     text-align: left;
     font-weight: bold;
-    color: #7B4E29;
+    color: var(--color-primario);
   }
 
   .edit-btn {
-    width: 50%;
+    width: 100%;
     margin-top: 10px;
   }
-  .acciones-header {
-    display: none !important;
+
+  .add-btn {
+    width: 100%;
+    margin: 10px 0;
   }
+
+  .add-btn-row td {
+    text-align: center;
+  }
+
   .admin-logo img {
     max-width: 150px;
   }

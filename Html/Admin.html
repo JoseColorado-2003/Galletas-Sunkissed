@@ -7,37 +7,80 @@
   <link rel="stylesheet" href="../Css/stylesadmin.css" />
 </head>
 <body>
-  <div class="admin-container">
-    <h1>Panel de Administración</h1>
-    <table class="admin-table">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Correo</th>
-          <th>Historial de Compras</th>
-          <th class="acciones-header">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Nombre">Juan Pérez</td>
-          <td data-label="Correo">juanperez@example.com</td>
-          <td data-label="Historial de Compras" contenteditable="true">Galletas Chips x3</td>
-          <td data-label="Acciones"><button class="edit-btn">Guardar</button></td>
-        </tr>
-        <tr>
-          <td data-label="Nombre">Lucía Gómez</td>
-          <td data-label="Correo">lucia@example.com</td>
-          <td data-label="Historial de Compras" contenteditable="true">Galleta Negra x1</td>
-          <td data-label="Acciones"><button class="edit-btn">Guardar</button></td>
-        </tr>
-        <!-- Más usuarios -->
-      </tbody>
-    </table>
 
-    <div class="admin-logo">
-      <img src="../Imagenes/Group (1).svg" alt="Logo Sunkissed">
-    </div>
+  <h1>Panel de Administración</h1>
+
+  <div class="filtros">
+    <select id="filtroNombre">
+      <option value="">Filtrar por nombre</option>
+    </select>
+
+    <select id="filtroCorreo">
+      <option value="">Filtrar por correo</option>
+    </select>
+
+    <select id="filtroGalleta">
+      <option value="">Filtrar por galleta</option>
+    </select>
+
+    <select id="filtroCantidad">
+      <option value="">Filtrar por cantidad</option>
+    </select>
   </div>
+
+  <table class="admin-table" id="adminTable">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Tipo de Galleta</th>
+        <th>Cantidad</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Usuario 1 -->
+      <tr data-user="juanperez@example.com" class="user-row">
+        <td rowspan="1">Juan Pérez</td>
+        <td rowspan="1">juanperez@example.com</td>
+        <td contenteditable="true">Chips</td>
+        <td contenteditable="true">3</td>
+        <td>
+          <button class="edit-btn guardar">Guardar</button>
+          <button class="edit-btn modificar">Modificar</button>
+          <button class="edit-btn borrar" onclick="borrarFila(this)">Borrar</button>
+        </td>
+      </tr>
+      <tr class="add-btn-row">
+        <td colspan="5" class="add-btn-cell">
+          <button class="add-btn" onclick="agregarGalleta(this, 'Juan Pérez', 'juanperez@example.com')">Agregar otra galleta</button>
+        </td>
+      </tr>
+
+      <!-- Usuario 2 -->
+      <tr data-user="lucia@example.com" class="user-row">
+        <td rowspan="1">Lucía Gómez</td>
+        <td rowspan="1">lucia@example.com</td>
+        <td contenteditable="true">Negra</td>
+        <td contenteditable="true">1</td>
+        <td>
+          <button class="edit-btn guardar">Guardar</button>
+          <button class="edit-btn modificar">Modificar</button>
+          <button class="edit-btn borrar" onclick="borrarFila(this)">Borrar</button>
+        </td>
+      </tr>
+      <tr class="add-btn-row">
+        <td colspan="5" class="add-btn-cell">
+          <button class="add-btn" onclick="agregarGalleta(this, 'Lucía Gómez', 'lucia@example.com')">Agregar otra galleta</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="admin-logo">
+    <img src="../Imagenes/Group (1).svg" alt="Logo Sunkissed">
+  </div>
+
+  <script src="java/admin.js"></script>
 </body>
 </html>
