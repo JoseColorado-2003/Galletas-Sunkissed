@@ -132,6 +132,10 @@
     }
     
     .cookie-quantity {
+      background-color: var(--color-secundario);
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px var(--color-primario);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -174,7 +178,7 @@
     }
     
     .qty-btn:hover {
-      background-color: #8a5b3c;
+      background-color: var(--color-primario);
     }
     
     .qty-number {
@@ -190,6 +194,11 @@
       width: 100%;
     }
     
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
     
     /* ============ FOOTER ============ */
     .footer {
