@@ -110,3 +110,48 @@
     .google-button img {
         width: 20px;
     }
+/* Modo teléfono (responsive) */
+@media (max-width: 768px) {
+    body {
+      flex-direction: column;
+      padding: 20px;
+    }
+  
+    .register-container {
+      flex-direction: column;
+      padding: 10px;
+      height: auto;
+    }
+  
+    .register-card {
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+  
+    .register-buttons {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .button {
+      width: 100%;
+    }
+  
+    .google-button {
+      flex-direction: row;
+      justify-content: center;
+    }
+  
+    input {
+        width: auto;
+    }
+  
+    h2 {
+      font-size: 20px;
+    }
+  
+    .register-logo img {
+      width: 100px;
+    }
+  }

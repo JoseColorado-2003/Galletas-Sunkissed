@@ -9,9 +9,11 @@
 <body>
   <div class="login-container">
     <div class="login-box">
+      <!-- Logo -->
       <img src="../Imagenes/Group (1).svg" alt="Sunkissed Logo" class="logo" />
       <h2>Inicia Sesion</h2>
 
+      <!-- Formulario -->
       <form id="loginForm">
         <input type="text" id="usuario" placeholder="Usuario" required />
         <input type="password" id="contrasena" placeholder="Contraseña" required />
@@ -21,6 +23,7 @@
         </div>
       </form>
 
+      <!-- Login con Google -->
       <div class="google-login">
         <button class="google-button">
             <img src="../Imagenes/icongoogle.svg" alt="Google"> Continuar con Google
@@ -29,24 +32,21 @@
     </div>
   </div>
 
-
-
+  <!-- Script para redirección según usuario -->
   <script>
-  document.getElementById('loginForm').addEventListener('submit', function (e) {
-    e.preventDefault(); // Evita el envío tradicional del formulario
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault(); // Evita el envío tradicional del formulario
 
-    const usuario = document.getElementById('usuario').value;
-    const contrasena = document.getElementById('contrasena').value;
+      const usuario = document.getElementById('usuario').value;
+      const contrasena = document.getElementById('contrasena').value;
 
-    // Usuario especial que redirige a otra página
-    if (usuario === 'admin' && contrasena === '1234') {
-      window.location.href = '../Html/Admin.html'; // Página especial
-    } else {
-      window.location.href = '../Html/Main.html'; // Página normal para todos
-    }
-  });
-</script>
-
-
+      // Usuario especial que redirige a otra página
+      if (usuario === 'admin' && contrasena === '1234') {
+        window.location.href = '../Html/Admin.html'; // Página especial
+      } else {
+        window.location.href = '../Html/Main.html'; // Página normal para todos
+      }
+    });
+  </script>
 </body>
 </html>
