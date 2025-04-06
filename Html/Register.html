@@ -12,15 +12,15 @@
             <div class="register-logo">
                 <img src="../Imagenes/Group (1).svg" alt="Sunkissed Logo">
             </div>
-            <h2>Registrate</h2>
-            <form>
-                <input type="text" placeholder="Nombre" required>
-                <input type="email" placeholder="Correo" required>
-                <input type="password" placeholder="Contraseña" required>
-                <input type="password" placeholder="Confirmar contraseña" required>
+            <h2>Regístrate</h2>
+            <form id="registerForm">
+                <input type="text" id="nombre" placeholder="Nombre" required>
+                <input type="email" id="correo" placeholder="Correo" required>
+                <input type="password" id="contrasena" placeholder="Contraseña" required>
+                <input type="password" id="confirmarContrasena" placeholder="Confirmar contraseña" required>
                 <div class="register-buttons">
-                    <button class="button" onclick="location.href='Login.html'">Regresar</button>
-                    <button class="button">Registrarse</button>
+                    <button class="button" type="button" onclick="location.href='Login.html'">Regresar</button>
+                    <button class="button" type="submit">Registrarse</button>
                 </div>
                 <div class="google-login">
                     <button class="google-button">
@@ -29,15 +29,9 @@
                 </div>
             </form>
         </div>
-
-        <div class="google-login">
-          <button class="google-button" type="button">
-            <img src="../Imagenes/icongoogle.svg" alt="Google">
-            Continuar con Google
-          </button>
-        </div>
-      </form>
     </div>
-  </div>
+
+    <!-- Añadir el script de JavaScript -->
+    <script src="../Html/java/register.js"></script>
 </body>
 </html>

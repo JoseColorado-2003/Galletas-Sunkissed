@@ -197,3 +197,27 @@ window.addEventListener('DOMContentLoaded', () => {
 
   paginaCargada = true; // <- Agrega esta línea justo antes del cierre
 });
+document.addEventListener('DOMContentLoaded', function () {
+  // Recuperamos los usuarios guardados en localStorage
+  const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+  // Verificamos si el usuario está logeado
+  const usuarioLogeado = usuarios.find(usuario => usuario.correo === localStorage.getItem('usuarioLogeado'));
+
+  // Si el usuario está logeado, cambiamos el botón
+  if (usuarioLogeado) {
+    // Encontramos el botón que lleva al login
+    const loginButton = document.querySelector('.button');
+
+    // Si existe el botón
+    if (loginButton) {
+      // Cambiar texto del botón
+      loginButton.textContent = 'Ir a mi perfil';
+      
+      // Cambiar la URL del botón para ir al perfil del usuario
+      loginButton.onclick = function () {
+        window.location.href = 'Perfil.html'; // Cambia esto con la ruta del perfil de usuario
+      };
+    }
+  }
+});
