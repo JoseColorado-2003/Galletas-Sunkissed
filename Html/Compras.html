@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sunkissed Galletas</title>
+  <link rel="stylesheet" href="../Css/stylescompras.css" />
+</head>
+<body>
+    <section class="header">
+        <img src="../Imagenes/Group (1).svg" alt="Logo" class="logo">
+        <nav class="nav">
+            <a href="#promo">Promociones</a>
+            <a href="#about" onclick="location.href='Main.html'">¿Quiénes somos?</a>
+            <a href="#cookies" id="expandAll" onclick="location.href='Main.html'">Galletas</a>
+            <a href="#compras">Compras</a>
+        </nav>
+
+        <button class="button" onclick="location.href='Login.html'">Ingresar</button>
+
+    </section>
+
+  <section class="hero" id="promo">
+    <div class="hero-background">
+        <img src="../Imagenes/Promo.svg" alt="Fondo promo">
+    </div>
+    <button class="button2" onclick="location.href='Compras.html'">Saber más</button>
+</section>
+
+<!-- Contenedor de tarjetas -->
+<section class="cookies-container" id="cookies">
+    <div class="cookie-card">
+      <img src="../Imagenes/galletaChips.svg" alt="Galleta Chips" class="cookie-img" />
+      <div class="description-box">
+        <h3 class="cookie-title">Galleta Chips</h3>
+        Galleta con chispas de chocolate, crujiente por fuera y suave por dentro.
+      </div>
+      <div class="cookie-quantity">
+        <span class="quantity-label">Cantidad</span>
+        <div class="quantity-controls">
+          <button class="qty-btn-negative">-</button>
+          <span class="qty-number">0</span>
+          <button class="qty-btn-positive">+</button>
+        </div>
+      </div>
+      <div class="card-buttons">
+        <button class="button">Comprar</button>
+      </div>
+    </div>
+
+    <div class="cookie-card">
+      <img src="../Imagenes/galletaNegra.svg" alt="Galleta Vainilla" class="cookie-img" />
+      <div class="description-box">
+        <h3 class="cookie-title">Galleta Cacao</h3>
+        Galleta de cacao oscuro con relleno cremoso, perfecta para los amantes del chocolate.
+      </div>
+      <div class="cookie-quantity">
+        <span class="quantity-label">Cantidad</span>
+        <div class="quantity-controls">
+            <button class="qty-btn-negative">-</button>
+            <span class="qty-number">0</span>
+            <button class="qty-btn-positive">+</button>
+        </div>
+      </div>
+      <div class="card-buttons">
+        <button class="button">Comprar</button>
+      </div>
+    </div>
+
+    <div class="cookie-card">
+      <img src="../Imagenes/galletaQueso.svg" alt="Galleta Frambuesa" class="cookie-img" />
+      <div class="description-box">
+        <h3 class="cookie-title">Galleta Queso</h3>
+        Galleta de queso con un toque salado y textura suave. Ideal para un snack diferente.
+      </div>
+      <div class="cookie-quantity">
+        <span class="quantity-label">Cantidad</span>
+        <div class="quantity-controls">
+            <button class="qty-btn-negative">-</button>
+            <span class="qty-number">0</span>
+            <button class="qty-btn-positive">+</button>
+        </div>
+      </div>
+      <div class="card-buttons">
+        <button class="button">Comprar</button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <img src="../Imagenes/Group (1).svg" alt="Footer logo" class="footer-logo">
+    <div class="footer-section">
+        <h3>Conócenos</h3>
+        <a href="#">Sobre nosotros</a>
+    </div>
+    <div class="footer-section">
+        <h3>Redes sociales</h3>
+        <a href="#">Instagram</a>
+    </div>
+    <div class="footer-section">
+        <h3>Mi cuenta</h3>
+        <a href="#">Pedir</a>
+        <a href="#">Iniciar sesión</a>
+    </div>
+</footer>
+<script src="java/compras.js"></script>
+</body>
+</html>

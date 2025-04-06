@@ -10,21 +10,22 @@
   <div class="login-container">
     <div class="login-box">
       <img src="../Imagenes/Group (1).svg" alt="Sunkissed Logo" class="logo" />
-      <h2>Login</h2>
+      <h2>Inicia Sesion</h2>
 
       <form id="loginForm">
         <input type="text" id="usuario" placeholder="Usuario" required />
         <input type="password" id="contrasena" placeholder="Contraseña" required />
         <div class="buttons">
-          <button type="button">Registrarse</button>
-          <button type="submit">Entrar</button>
+          <button type="button" onclick="location.href='Register.html'">Registrarse</button>
+          <button type="submit" >Entrar</button>
         </div>
       </form>
 
       <div class="google-login">
-        <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google" />
-        <span>Continuar con Google</span>
-      </div>
+        <button class="google-button">
+            <img src="../Imagenes/icongoogle.svg" alt="Google"> Continuar con Google
+        </button>
+    </div>
     </div>
   </div>
 

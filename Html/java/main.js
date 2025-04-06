@@ -26,13 +26,38 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     cookieCards.forEach(card => {
-    card.addEventListener('click', function () {
-    cookieCards.forEach(otherCard => {
-    if (otherCard !== this) {
-        otherCard.classList.remove('expanded');
+        card.addEventListener('click', function () {
+            cookieCards.forEach(otherCard => {
+                if (otherCard !== this) {
+                    otherCard.classList.remove('expanded');
+                }
+            });
+            this.classList.toggle('expanded');
+        });
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    const expandAllButton = document.getElementById("expandAll");
+
+    if (expandAllButton) {
+        expandAllButton.addEventListener("click", function () {
+            cookieCards.forEach(card => {
+                card.classList.add('expanded');
+            });
+        });
     }
-    });
-    this.classList.toggle('expanded');
-    });
-    });
+
 });

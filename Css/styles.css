@@ -1,160 +1,144 @@
-/* General */
-body {
+:root {
+    --color-primario: #A06F4C;
+    --color-secundario: #EFD8B1;
+    --color-negro: #000000;
+    --color-blanco: #FFFFFF;
+  }
+  
+  /* ============ GENERAL ============ */
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  body {
+    scroll-behavior: smooth;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #F5E1C8;
+    background-color: var(--color-secundario);
     background-image: url('../Imagenes/Background.svg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-}
-html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-}
-/* Header */
-.header {
+  }
+  
+  /* ============ HEADER ============ */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #E6C7A1;
-}
-
-.logo {
+    background-color: var(--color-secundario);
+    overflow-x: hidden;
+  }
+  
+  .logo {
     width: 150px;
-}
-
-.nav a {
+  }
+  
+  .nav a {
     margin: 0 15px;
     text-decoration: none;
-    color: #7B4E29;
+    color: var(--color-primario);
     font-weight: bold;
-}
-
-/* Sección Principal (Hero) */
-.hero {
-    position: relative; /* Asegura que los elementos internos usen esta referencia */
+  }
+  
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
-}
-
- h3{
-    margin: 0 15px;
-    text-decoration: none;
-    color: #7B4E29;
-    font-weight: bold;
-}
-p{
-    margin: 20px 15px;
-    text-decoration: none;
-    color: #7B4E29;
-    font-weight: semi-bold;
-}
-.hero-background img {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  
+  .hero-background img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Esto hace que cubra toda el área sin deformarse */
-}
-
-.hero button {
+    object-fit: cover;
+  }
+  
+  .hero .button2{
     position: absolute;
-    bottom: 10%; /* Ajusta la distancia desde la parte inferior */
+    bottom: 10%;
     left: 50%;
-    transform: translateX(-50%); /* Centra exactamente el botón */
-    padding: 12px 24px;
-    background-color: #D2A679;
-    color: #7B4E29;
-    font-weight: bold;
-    border: none;
-    border-radius: 20px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transform: translateX(-50%);
+    font-weight: bold;  
     cursor: pointer;
-}
-
-/* Ajuste del Botón en la Promo */
-.button {
-    background-color: #D2A679;
-    color: #7B4E29;
-    font-weight: bold;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 20px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    padding: 14px 24px;
     transition: all 0.3s ease;
-    cursor: pointer;
-}
-.hero button {
-    display: block;
-    z-index: 1;
-    margin: 20px auto 0 auto; /* top, horizontal, bottom, horizontal */
-}
-.button:hover {
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* Quiénes Somos */
-.about {
+  }
+  
+  /* ============ ABOUT (Quiénes Somos) ============ */
+  .about {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     padding: 50px;
-}
-
-.about-container {
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .about-container {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
-    max-width: 1200px; /* Limita para que no se abra demasiado */
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 150px 50px; /* Controla espacio lateral del contenedor */
-}
-
-
-/* Imagen de las galletas */
-.about-image {
+    padding: 150px 50px;
+    gap: 10%;
+  }
+  
+  .about-image {
     position: relative;
-    width: 300px; /* Ajusta según necesites */
+    width: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.about-image .background {
+  }
+  
+  .about-image .background {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100%; 
+    width: 100%;
     z-index: 1;
-}
-
-.about-image .cookies-img {
+  }
+  
+  .about-image .cookies-img {
     position: relative;
-    width: 60%; /* 🔽 Tamaño ajustado */
+    width: 60%;
     z-index: 2;
-}
-
-/* Texto */
-.about-text {
+  }
+  
+  .about-text {
     position: relative;
     z-index: 1;
     text-align: center;
     padding: 20px;
     max-width: 600px;
-}
-
-.about-text .background-text {
+  }
+  
+  .about-text .background-text {
     position: absolute;
     top: -80px;
     left: 50%;
@@ -162,42 +146,63 @@ p{
     width: 120%;
     height: 180%;
     z-index: -1;
-}
-
-.about-logo {
+  }
+  
+  .about-logo {
     width: 200px;
     display: block;
     margin: 0 auto;
-}
-
-.about-text p {
+  }
+  
+  .about-text p {
     font-size: 16px;
     line-height: 1.6;
-}
-
-/*Cookies*/
-.cookies {
+    margin: 20px 15px;
+    color: var(--color-primario);
+    font-weight: 600;
+  }
+  
+  /* ============ COOKIES ============ */
+  .cookies {
+    width: 100vw;
+    min-height: 80vh;
+    padding: 80px 20px;
+    background-color: var(--color-primario);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    gap: 20px;
+  }
+  
+  .cookies-title {
+    font-size: 3rem;
+    color: var(--color-blanco);
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  
+  .cookies-container {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap; /* Asegura que se ajusten si hay muchas */
-    gap: 40px; /* Espacio entre tarjetas */
-    min-height: 700px;
-    padding: 80px 20px;
-    background-color: #7B4E29;
-}
-
-.cookie-card {
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 100%;
+  }
+  
+  .cookie-card {
+    gap: 20px;
     width: 25%;
-    height: 30%;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
     background-image: url('../Imagenes/Background2.svg');
-    background-color: #F5E1C8;
+    background-color: var(--color-secundario);
     background-size: cover;
     background-position: center;
     border-radius: 15px;
     cursor: pointer;
     overflow: hidden;
-    padding: 30px; /* Más espacio interno */
+    padding: 30px;
     box-sizing: border-box;
     transition: all 0.4s ease-in-out;
     display: flex;
@@ -205,14 +210,21 @@ p{
     align-items: center;
   }
   
-  /* Galleta visible siempre */
-  .cookie-card .cookie-img {
-    width: 140px; /* Aumentado de 100px */
-    height: auto;
-    margin-bottom: 10px;
+  .cookie-img {
+    transition: transform 0.4s ease, width 0.4s ease;
+    filter: drop-shadow(0px 8px px var(--color-primario));
   }
   
-  /* Contenido oculto inicialmente */
+  .cookie-card:not(.expanded) .cookie-img {
+    width: 180px;
+    transform: scale(1.2);
+  }
+  
+  .cookie-card.expanded .cookie-img {
+    width: 140px;
+    transform: scale(1);
+  }
+  
   .card-extra {
     max-height: 0;
     opacity: 0;
@@ -221,115 +233,153 @@ p{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
   }
   
-  /* Mostrar contenido al hacer clic */
   .cookie-card.expanded .card-extra {
     max-height: 200px;
     opacity: 1;
   }
   
-  /* Reutilizamos estilos ya existentes */
   .description-box {
-    background-color: #F5E1C8;
+    box-shadow: 0 8px 15px var(--color-primario);
+    background-color: var(--color-secundario);
     padding: 10px;
     border-radius: 10px;
     text-align: center;
     max-width: 500px;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 999px;
-    cursor: pointer;
+    color: var(--color-primario);
     font-weight: bold;
     transition: background 0.3s;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card-buttons {
+    padding: 10px;
   }
   
   .card-buttons button:hover {
-    background-color: #5c381c;
+    background-color: var(--color-primario);
   }
   
-
   .cookie-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Fondo opaco */
-    display: none; /* OCULTA AL INICIO */
+    backdrop-filter: blur(2px);
+    display: none;
     justify-content: center;
     align-items: center;
     z-index: 1000;
-}
-
-.cookie-content {
-    background: #9C6B43;
+  }
+  
+  .cookie-content {
+    background: var(--color-secundario);
     padding: 20px;
     border-radius: 10px;
     text-align: center;
     max-width: 500px;
-    color: white;
-    
-}
-/* Footer */
-.footer {
+    color: var(--color-primario);
+  }
+  
+  .cookie-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  /* ============ FOOTER ============ */
+  .footer {
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 30px;
-    background-color: #E6C7A1;
+    background-color: var(--color-secundario);
     text-align: center;
-}
-
-.footer-logo {
+  }
+  
+  .footer-logo {
     width: 200px;
-}
-
-.footer-section h3 {
+  }
+  
+  .footer-section h3 {
     margin-bottom: 10px;
-}
-
-.footer-section a {
+  }
+  
+  .footer-section a {
     display: block;
     text-decoration: none;
-    color: #7B4E29;
+    color: var(--color-primario);
     font-weight: bold;
     margin-top: 5px;
-}
-
-.footer-section a:hover {
+  }
+  
+  .footer-section a:hover {
     text-decoration: underline;
-}
-/* === ESTILOS RESPONSIVOS PARA MÓVIL === */
+  }
+  
+  /* ============ BOTONES GENERALES ============ */
+  .button {
+    background-color: var(--color-secundario);
+    color: var(--color-primario);
+    font-weight: bold;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px var(--color-primario);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid var(--color-primario);
+  }
+  
+  .button:hover {
+    box-shadow: inset 0px 2px 2px var(--color-primario);
+  }
+  
+  .button2 {
+    background-color: var(--color-secundario);
+    color: var(--color-primario);
+    font-weight: bold;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: inset 0px 2px 2px var(--color-primario);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid var(--color-primario);
+  }
+  .button2:hover {
+    box-shadow: 0px 2px 4px var(--color-primario);
+  }
+/* === Responsive === */
 @media (max-width: 768px) {
-
     .header {
         width: 100%;
         padding: 20px 0;
         box-sizing: border-box;
         flex-direction: column;
         text-align: center;
-        background-color: #E6C7A1; /* o el color que uses */
-      }
-      /* === Ajustes individuales de imágenes === */
-    .promo-img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+        background-color: var(--color-secundario);
     }
+
+    .promo-img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
     .about-text p {
         font-size: 10px;
     }
+
     .about-image .background {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         width: 80%;
-        z-index: 1;
     }
+
     .nav {
         display: flex;
         flex-direction: column;
@@ -350,7 +400,6 @@ p{
     }
 
     button .button {
-
         max-width: 300px;
         padding: 14px;
         font-size: 16px;
@@ -377,11 +426,6 @@ p{
         gap: 30px;
     }
 
-    .cookies-section {
-        
-        height: 1100px;
-        padding: 30px 10px;
-    }
 
     .cookies-container {
         flex-direction: column;

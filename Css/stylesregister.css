@@ -1,9 +1,15 @@
+:root {
+    --color-primario: #A06F4C;
+    --color-secundario: #EFD8B1;
+    --color-negro: #000000;
+    --color-blanco: #FFFFFF;
+  }
     /* General */
     body {
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #F5E1C8;
+        background-color: var(--color-secundario);
         background-image: url('../Imagenes/Background2.svg'); 
         background-size: cover;
         background-position: center;
@@ -25,10 +31,10 @@
 
     /* Tarjeta de registro */
     .register-card {
-        background: #EFD8B1;
+        background: var(--color-secundario);
         padding: 40px;
         border-radius: 20px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 4px 8px var(--color-primario);
         text-align: center;
         width: 400px;
         position: relative;
@@ -41,18 +47,20 @@
     }
 
     /* Inputs */
+
     input {
         width: calc(100% - 20px);
-        padding: 10px;
+        padding: 12px;
         margin: 10px 0;
-        border: 1px solid #9C6B43;
-        border-radius: 5px;
+        border: 1px solid var(--color-primario);
+        border-radius: 8px;
+        background-color: var(--color-secundario);
         font-size: 16px;
     }
     h2{
         margin: 0 15px;
         text-decoration: none;
-        color: #7B4E29;
+        color: var(--color-primario);
         font-weight: bold;
     }
     /* Botones */
@@ -63,20 +71,20 @@
     }
 
     .button {
-        background-color: #E5CBA4;
-        color: #7B4E29;
+        background-color: var(--color-secundario);
+        color: var(--color-primario);
         font-weight: bold;
         padding: 8px 18px;
         font-size: 14px;
-        border: 2px solid #7B4E29;
-        border-radius: 20px;
+        border: 2px solid var(--color-primario);
+        border-radius: 5px;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
         transition: all 0.3s ease;
         cursor: pointer;
     }
 
     .button:hover {
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 2px 4px var(--color-primario);
     }
 
     /* Botón de Google */
@@ -85,12 +93,12 @@
     }
 
     .google-button {
-        background-color: #E5CBA4;
-        color: black;
+        background-color: var(--color-secundario);
+        color: var(--color-primario);
         font-size: 14px;
         padding: 10px;
         width: 100%;
-        border: 1px solid #000000;
+        border: 1px solid var(--color-primario);
         border-radius: 5px;
         display: flex;
         align-items: center;
