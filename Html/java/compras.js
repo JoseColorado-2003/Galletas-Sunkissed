@@ -1,118 +1,199 @@
+let paginaCargada = false;
 
-  document.addEventListener('DOMContentLoaded', function () {
-    // Selecciona todos los contenedores de control de cantidad
-    const quantityControls = document.querySelectorAll('.quantity-controls');
+// Inventario editable global
+const inventario = {
+  "Chips": 10,
+  "Cacao": 8,
+  "Queso": 5
+};
+if (Notification.permission !== "granted") {
+  Notification.requestPermission();
+}
 
-    quantityControls.forEach(control => {
-      const btnAdd = control.querySelector('.qty-btn-positive');
-      const btnSubtract = control.querySelector('.qty-btn-negative');
-      const qtyDisplay = control.querySelector('.qty-number');
+function mostrarMensaje(mensaje) {
+  if (Notification.permission === "granted") {
+    new Notification("Sunkissed Galletas", {
+      body: mensaje,
+      icon: "../Imagenes/galletaChips.svg" // Puedes cambiarlo o quitarlo
+    });
+  } else {
+    alert(mensaje); // Por si no da permiso, usamos un alert como respaldo
+  }
+}
 
-      btnAdd.addEventListener('click', () => {
-        let currentQty = parseInt(qtyDisplay.textContent);
+window.addEventListener('DOMContentLoaded', () => {
+  for (const galleta in inventario) {
+    const stockElement = document.getElementById(`stock-${galleta}`);
+    if (stockElement) {
+      stockElement.textContent = `Stock disponible: ${inventario[galleta]}`;
+    }
+  }
+
+  // Controles de cantidad en tarjetas normales
+  document.querySelectorAll('.cookie-card .quantity-controls').forEach(control => {
+    const btnAdd = control.querySelector('.qty-btn-positive');
+    const btnSubtract = control.querySelector('.qty-btn-negative');
+    const qtyDisplay = control.querySelector('.qty-number');
+
+    btnAdd?.addEventListener('click', () => {
+      let currentQty = parseInt(qtyDisplay.textContent);
+      const title = control.closest('.cookie-card')?.querySelector('.cookie-title')?.textContent.trim().replace('Galleta ', '');
+      const maxStock = inventario[title] ?? Infinity;
+
+      if (currentQty < maxStock) {
         qtyDisplay.textContent = currentQty + 1;
-      });
-
-      btnSubtract.addEventListener('click', () => {
-        let currentQty = parseInt(qtyDisplay.textContent);
-        if (currentQty > 0) {
-          qtyDisplay.textContent = currentQty - 1;
-        }
-      });
-    });
-
-    const revealElements = document.querySelectorAll('.reveal');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const el = entry.target;
-
-            if (entry.isIntersecting) {
-                el.classList.add('show');
-            } else {
-                el.classList.remove('show');
-            }
-        });
-    }, {
-        threshold: 0.4 // porcentaje visible antes de activar
-    });
-
-    revealElements.forEach(el => observer.observe(el));
-
-      let promoCount = 0; // Contador de promociones seleccionadas
-      let maxCookies = 0; // Máximo de galletas permitidas
-    
-      // Elementos DOM
-      const promoQuantityDisplay = document.querySelector("#popupOverlay .qty-number"); // Cantidad de promociones
-      const cookieQuantityDisplays = document.querySelectorAll(".cookie-quantity .qty-number"); // Cantidad de galletas por producto
-      const openPopupButton = document.getElementById("openPopup");
-      const popupOverlay = document.getElementById("popupOverlay");
-      const popupCloseButton = document.querySelector(".close-popup"); // Botón de cerrar popup
-    
-      // Mostrar el popup al hacer clic en el botón "Comprar"
-      openPopupButton.addEventListener('click', function () {
-        popupOverlay.style.display = 'flex'; // Mostrar popup
-      });
-    
-      // Cerrar el popup
-      popupCloseButton.addEventListener('click', function () {
-        popupOverlay.style.display = 'none'; // Ocultar popup
-      });
-    
-      // Función para actualizar la cantidad máxima de galletas basadas en promociones
-      function updateMaxCookies() {
-        maxCookies = promoCount * 3; // Cada promoción permite 3 galletas
-        promoQuantityDisplay.textContent = promoCount; // Actualizar la visualización de promociones
-    
-        // Actualizar las cantidades máximas para cada producto en el popup
-        cookieQuantityDisplays.forEach((display) => {
-          const currentQty = parseInt(display.textContent);
-          const newQty = currentQty > maxCookies ? maxCookies : currentQty; // No permitir más de la cantidad máxima
-          display.textContent = newQty; // Actualizar la cantidad en la interfaz
-        });
+      } else {
+        mostrarMensaje(`Has alcanzado el máximo de ${maxStock} en inventario para ${title}`);
       }
-    
-      // Lógica para aumentar o disminuir la cantidad de promociones
-      document.querySelector("#popupOverlay .qty-btn-positive").addEventListener('click', function () {
-        if (promoCount < 3) { // Limitamos a 3 promociones máximo
-          promoCount++;
-          updateMaxCookies(); // Actualizar el límite de galletas
-        }
-      });
-    
-      document.querySelector("#popupOverlay .qty-btn-negative").addEventListener('click', function () {
-        if (promoCount > 0) {
-          promoCount--;
-          updateMaxCookies(); // Actualizar el límite de galletas
-        }
-      });
-    
-      // Lógica para aumentar o disminuir la cantidad de galletas
-      document.querySelectorAll(".cookie-quantity .qty-btn-positive").forEach(button => {
-        button.addEventListener('click', function () {
-          const qtyDisplay = button.closest('.cookie-quantity').querySelector('.qty-number');
-          let currentQty = parseInt(qtyDisplay.textContent);
-    
-          if (currentQty < maxCookies) {
-            qtyDisplay.textContent = currentQty + 1; // Aumentar la cantidad de galletas
-          }
-        });
-      });
-    
-      document.querySelectorAll(".cookie-quantity .qty-btn-negative").forEach(button => {
-        button.addEventListener('click', function () {
-          const qtyDisplay = button.closest('.cookie-quantity').querySelector('.qty-number');
-          let currentQty = parseInt(qtyDisplay.textContent);
-    
-          if (currentQty > 0) {
-            qtyDisplay.textContent = currentQty - 1; // Disminuir la cantidad de galletas
-          }
-        });
-      });
-    
-      // Inicialización
-      updateMaxCookies(); // Inicializamos la cantidad máxima de galletas al cargar la página
     });
 
-  
-  
+    btnSubtract?.addEventListener('click', () => {
+      let currentQty = parseInt(qtyDisplay.textContent);
+      if (currentQty > 0) {
+        qtyDisplay.textContent = currentQty - 1;
+      }
+    });
+  });
+
+  // Animaciones con Intersection Observer
+  const revealElements = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const el = entry.target;
+      el.classList.toggle('show', entry.isIntersecting);
+    });
+  }, { threshold: 0.4 });
+  revealElements.forEach(el => observer.observe(el));
+
+  // POPUP DE PROMOCIONES
+  let promoCount = 0;
+  let maxCookies = 0;
+
+  const popupOverlay = document.getElementById("popupOverlay");
+  const promoQuantityDisplay = popupOverlay?.querySelector(".cookie-quantity .qty-number");
+  const cookieQuantityDisplays = popupOverlay?.querySelectorAll(".cookie-card .cookie-quantity .qty-number");
+
+  const openPopupButton = document.getElementById("openPopup");
+  openPopupButton?.addEventListener('click', () => {
+    popupOverlay.style.display = 'flex';
+  });
+
+  const popupCloseButton = popupOverlay?.querySelector(".close-popup");
+  popupCloseButton?.addEventListener('click', () => {
+    popupOverlay.style.display = 'none';
+  });
+
+  function updateMaxCookies() {
+    maxCookies = promoCount * 3;
+    if (promoQuantityDisplay) promoQuantityDisplay.textContent = promoCount;
+
+    cookieQuantityDisplays?.forEach((display) => {
+      const currentQty = parseInt(display.textContent);
+      const newQty = Math.min(currentQty, maxCookies);
+      display.textContent = newQty;
+    });
+  }
+
+  const promoControls = popupOverlay?.querySelector(".cookie-quantity .quantity-controls");
+  const promoPlus = promoControls?.querySelector(".qty-btn-positive");
+  const promoMinus = promoControls?.querySelector(".qty-btn-negative");
+
+  promoPlus?.addEventListener('click', () => {
+    if (promoCount < 3) {
+      promoCount++;
+      updateMaxCookies();
+    }
+  });
+
+  promoMinus?.addEventListener('click', () => {
+    if (promoCount > 0) {
+      promoCount--;
+      updateMaxCookies();
+    }
+  });
+
+  // Controles de cantidad de galletas en el popup
+  popupOverlay?.querySelectorAll(".cookie-card .cookie-quantity").forEach(control => {
+    const btnAdd = control.querySelector('.qty-btn-positive');
+    const btnSubtract = control.querySelector('.qty-btn-negative');
+    const qtyDisplay = control.querySelector('.qty-number');
+
+    btnAdd?.addEventListener('click', () => {
+      const currentQty = parseInt(qtyDisplay.textContent);
+      const title = control.closest('.cookie-card')?.querySelector('.cookie-title')?.textContent.trim().replace('Galleta ', '');
+      const maxStock = Math.min(inventario[title] ?? Infinity, maxCookies);
+
+      const totalQtyInPopup = Array.from(cookieQuantityDisplays).reduce((acc, span) => acc + parseInt(span.textContent), 0);
+
+      if (totalQtyInPopup >= maxCookies) {
+        mostrarMensaje(`Solo puedes agregar hasta ${maxCookies} galletas en total en esta promoción.`);
+        return;
+      }
+
+      if (currentQty < maxStock) {
+        qtyDisplay.textContent = currentQty + 1;
+      } else {
+        mostrarMensaje(`Has alcanzado el máximo permitido para ${title}`);
+      }
+    });
+
+    btnSubtract?.addEventListener('click', () => {
+      const currentQty = parseInt(qtyDisplay.textContent);
+      if (currentQty > 0) {
+        qtyDisplay.textContent = currentQty - 1;
+      }
+    });
+  });
+
+  // Botones de comprar en el popup
+  document.querySelectorAll('.buy-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const cards = document.querySelectorAll('#popupOverlay .cookie-card');
+      let cantidades = {};
+
+      cards.forEach(card => {
+        const title = card.querySelector('.cookie-title')?.textContent.trim().replace('Galleta ', '');
+        const qty = card.querySelector('.qty-number')?.textContent.trim();
+        if (title && qty !== null) {
+          cantidades[title] = parseInt(qty, 10);
+        }
+      });
+
+      const params = new URLSearchParams();
+      for (const [nombre, cantidad] of Object.entries(cantidades)) {
+        params.append(nombre, cantidad);
+      }
+
+      window.location.href = "Check.html?" + params.toString();
+    });
+  });
+
+  // Botones de comprar en tarjetas normales
+  document.querySelectorAll('.cookie-card .button:not(.buy-btn)').forEach(button => {
+    button.addEventListener('click', () => {
+      const cards = document.querySelectorAll('section.cookies-container .cookie-card');
+      let cantidades = {};
+
+      cards.forEach(card => {
+        const title = card.querySelector('.cookie-title')?.textContent.trim().replace('Galleta ', '');
+        const qty = card.querySelector('.qty-number')?.textContent.trim();
+        if (title && qty !== null) {
+          cantidades[title] = parseInt(qty, 10);
+        }
+      });
+
+      const params = new URLSearchParams();
+      for (const [nombre, cantidad] of Object.entries(cantidades)) {
+        params.append(nombre, cantidad);
+      }
+
+      window.location.href = "Check.html?" + params.toString();
+    });
+  });
+
+
+
+  updateMaxCookies(); // Inicializar
+
+  paginaCargada = true; // <- Agrega esta línea justo antes del cierre
+});

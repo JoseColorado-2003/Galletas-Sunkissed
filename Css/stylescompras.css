@@ -279,32 +279,38 @@
     }
 
     /* Fondo oscuro tras el pop-up */
-  .popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0,0,0,0.6);
-    display: none; /* Oculto por defecto */
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-  }
-
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6); /* Fondo oscuro */
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
   /* Caja blanca del pop-up */
   .popup-content {
-    background-color: var(--color-secundario);
-    color: var(--color-primario);
+    background: #8a5b3c;
     padding: 30px;
     border-radius: 20px;
-    text-align: center;
-    position: relative;
+    max-width: 1000px;
+    width: 90%;
     display: flex;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    gap: 10px ;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-height: 90vh;
+    overflow-y: auto;
   }
-
+  .popup-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
   /* Botón de cerrar */
   .close-popup {
     position: absolute;
@@ -356,5 +362,6 @@
       .footer-logo {
         width: 150px;
       }
+      
     }
     
