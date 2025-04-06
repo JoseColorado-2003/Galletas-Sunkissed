@@ -60,4 +60,22 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const el = entry.target;
+
+            if (entry.isIntersecting) {
+                el.classList.add('show');
+            } else {
+                el.classList.remove('show');
+            }
+        });
+    }, {
+        threshold: 0.7 // porcentaje visible antes de activar
+    });
+
+    revealElements.forEach(el => observer.observe(el));
+
 });
