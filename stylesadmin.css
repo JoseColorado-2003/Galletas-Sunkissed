@@ -11,6 +11,7 @@ body {
   padding: 20px;
   background-color: var(--color-secundario);
   color: var(--color-primario);
+  background-image: url('../Galletas-Sunkissed/Imagenes/Background2.svg');
 }
 
 .filtros {
