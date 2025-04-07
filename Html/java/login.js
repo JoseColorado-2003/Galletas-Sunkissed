@@ -1,36 +1,25 @@
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('loginForm').addEventListener('submit', function (e) {
-    e.preventDefault(); // Evita el envío tradicional del formulario
+    e.preventDefault();
 
-    const usuario = document.getElementById('usuario').value.trim(); // Eliminar espacios al inicio y al final
-    const contrasena = document.getElementById('contrasena').value.trim(); // Eliminar espacios al inicio y al final
+    const usuario = document.getElementById('usuario').value.trim();
+    const contrasena = document.getElementById('contrasena').value.trim();
 
-    // Recuperar el array de usuarios desde localStorage y parsear correctamente
-    const usuarios = JSON.parse(localStorage.getItem('usuarios')) || []; // Si no existe, usar un array vacío
+    const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
 
-    // Verificar si el usuario es "admin"
     if (usuario === "admin" && contrasena === "admin") {
       alert("¡Bienvenido, Admin!");
-
-      // Guardamos el usuario "admin" en localStorage
       localStorage.setItem('usuarioLogeado', 'admin');
-
-      // Redirigir al panel de administración
-      window.location.href = 'Admin.html'; // Redirige a la página Admin.html
-      return; // Termina la ejecución aquí si es admin
+      window.location.href = 'Admin.html';
+      return;
     }
 
-    // Buscar el usuario en el array por correo y contraseña
     const usuarioEncontrado = usuarios.find(u => u.correo === usuario && u.contrasena === contrasena);
 
     if (usuarioEncontrado) {
       alert("¡Inicio de sesión exitoso!");
-
-      // Guardamos el correo del usuario logeado antes de redirigir
-      localStorage.setItem('usuarioLogeado', usuario);
-
-      // Redirigir a la página principal
-      window.location.href = '../Html/Main.html'; // Cambia la ruta si es necesario
+      localStorage.setItem('usuarioLogeado', usuario); // Guarda el correo
+      window.location.href = '../Html/Main.html';
     } else {
       alert("Correo o contraseña incorrectos.");
     }
