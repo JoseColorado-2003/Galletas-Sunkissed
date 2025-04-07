@@ -355,24 +355,23 @@
   /* ============ ANIMACIONES PAGINA ============ */
 
   .reveal {
-  opacity: 0;
-  transform: translateX(0);
-  transition: all 0.8s ease;
-}
-
-.reveal-left {
-  transform: translateX(-100px);
-}
-
-.reveal-right {
-  transform: translateX(100px);
-}
-
-.reveal.show {
-  opacity: 1;
-  transform: translateX(0);
-}
-
+    opacity: 0;
+    transform: translateX(0);
+    transition: all 0.8s ease;
+  }
+  
+  .reveal-left {
+    transform: translateX(-100px);
+  }
+  
+  .reveal-right {
+    transform: translateX(100px);
+  }
+  
+  .reveal.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
 /* === Responsive === */
 @media (max-width: 768px) {
     .header {
