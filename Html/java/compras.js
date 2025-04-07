@@ -249,6 +249,40 @@ if (btnSubtract && qtyDisplay) {
   });
 
   updateMaxCookies(); // Inicializar
+// Botones de comprar en las tarjetas normales (fuera del popup)
+document.querySelectorAll('.cookie-card .buy-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const usuarioLogeado = verificarLogin();
+    if (!usuarioLogeado) return;
+
+    const cantidades = {};
+
+    document.querySelectorAll('.cookie-card').forEach(card => {
+      const title = card.querySelector('.cookie-title')?.textContent.trim().replace('Galleta ', '');
+      const qtyDisplay = card.querySelector('.qty-number');
+      const qty = qtyDisplay ? parseInt(qtyDisplay.textContent.trim()) || 0 : 0;
+
+      if (title && qty > 0) {
+        cantidades[title] = qty;
+      }
+    });
+
+    // Validar si hay alguna galleta seleccionada
+    if (Object.keys(cantidades).length === 0) {
+      mostrarMensaje("Debes seleccionar al menos una galleta para comprar.");
+      return;
+    }
+
+    // Redirigir con parámetros a Check.html
+    const params = new URLSearchParams();
+    for (const [nombre, cantidad] of Object.entries(cantidades)) {
+      params.append(nombre, cantidad);
+    }
+
+    window.location.href = "Check.html?" + params.toString();
+  });
+});
+
 
   paginaCargada = true; // <- Agrega esta línea justo antes del cierre
 });

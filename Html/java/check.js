@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const telefonoWhatsApp = '549XXXXXXXXX'; // Reemplazar con el número de WhatsApp correcto
   
       // Crear el enlace de WhatsApp con el mensaje codificado
-      const enlaceWhatsApp = `https://wa.me/${telefonoWhatsApp}?text=${mensajeCodificado}`;
+      const enlaceWhatsApp = `https://wa.me/${+573173599389}?text=${mensajeCodificado}`;
   
       // Redirigir al usuario al enlace de WhatsApp
       window.open(enlaceWhatsApp, '_blank');
