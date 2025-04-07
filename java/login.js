@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (usuario === "admin" && contrasena === "admin") {
       alert("¡Bienvenido, Admin!");
       localStorage.setItem('usuarioLogeado', 'admin');
-      window.location.href = 'Admin.html';
+      window.location.href = '../Galletas-Sunkissed/Admin.html';
       return;
     }
 
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (usuarioEncontrado) {
       alert("¡Inicio de sesión exitoso!");
       localStorage.setItem('usuarioLogeado', usuario); // Guarda el correo
-      window.location.href = '../index.html';
+      window.location.href = '../Galletas-Sunkissed/index.html';
     } else {
       alert("Correo o contraseña incorrectos.");
     }

@@ -27,7 +27,7 @@ function verificarLogin() {
   const usuarioLogeado = localStorage.getItem('usuarioLogeado');
   if (!usuarioLogeado) {
     alert("Debes iniciar sesión antes de continuar.");
-    window.location.href = 'Login.html';
+    window.location.href = '../Galletas-Sunkissed/Login.html';
     return false;
   }
   return usuarioLogeado;
@@ -52,7 +52,7 @@ window.addEventListener('DOMContentLoaded', () => {
     if (loginButton) {
       loginButton.textContent = 'Ir a mi perfil';
       loginButton.onclick = function () {
-        window.location.href = 'Perfil.html';
+        window.location.href = '../Galletas-Sunkissed/Perfil.html';
       };
     }
   }
@@ -211,7 +211,7 @@ window.addEventListener('DOMContentLoaded', () => {
         params.append(nombre, cantidad);
       }
 
-      window.location.href = "Check.html?" + params.toString();
+      window.location.href = "../Galletas-Sunkissed/Check.html?" + params.toString();
     });
   });
 
@@ -249,7 +249,7 @@ document.querySelectorAll('.cookie-card .buy-btn').forEach(button => {
       params.append(nombre, cantidad);
     }
 
-    window.location.href = "Check.html?" + params.toString();
+    window.location.href = "../Galletas-Sunkissed/Check.html?" + params.toString();
   });
 });
 

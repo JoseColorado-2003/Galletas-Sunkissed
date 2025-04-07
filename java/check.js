@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!usuarioLogeado) {
     alert("Por favor, inicie sesión para realizar el pedido.");
-    window.location.href = 'Login.html';
+    window.location.href = '../Galletas-Sunkissed/Login.html';
     return;
   }
 
@@ -12,13 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!usuario) {
     alert("No se encontró el usuario. Por favor, inicia sesión nuevamente.");
-    window.location.href = 'Login.html';
+    window.location.href = '../Galletas-Sunkissed/Login.html';
     return;
   }
 
   if (!usuario.nombre || !usuario.correo) {
     alert("Faltan datos del usuario. Por favor, actualiza tu información.");
-    window.location.href = 'Login.html';
+    window.location.href = '../Galletas-Sunkissed/Login.html';
     return;
   }
 
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (Object.keys(cantidades).length === 0) {
     alert("No has seleccionado ningún pedido.");
-    window.location.href = 'index.html';
+    window.location.href = '../Galletas-Sunkissed/index.html';
     return;
   }
 
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Redirigir a Compras.html después de 1.5 segundos
     setTimeout(() => {
-      window.location.href = 'Compras.html';
+      window.location.href = '../Galletas-Sunkissed/Compras.html';
     }, 1500);
   }
 

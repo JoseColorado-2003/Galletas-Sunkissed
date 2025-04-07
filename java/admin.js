@@ -49,7 +49,7 @@ function borrarFila(boton) {
         <button class="edit-btn modificar">Modificar</button>
         <button class="edit-btn borrar">Borrar</button>
       </td>
-    `;
+      `;
   
     filaBoton.parentNode.insertBefore(nuevaFila, filaBoton);
   

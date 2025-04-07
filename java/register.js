@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
       localStorage.setItem('usuarios', JSON.stringify(usuarios));
   
       alert('¡Registro exitoso! Ahora puedes iniciar sesión.');
-      window.location.href = 'Login.html'; // Redirigir a la página de login después del registro
+      window.location.href = '../Galletas-Sunkissed/Login.html'; // Redirigir a la página de login después del registro
     });
   });
   
