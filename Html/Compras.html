@@ -17,7 +17,6 @@
         </nav>
 
         <button class="button" onclick="location.href='Login.html'">Ingresar</button>
-
     </section>
 
   <section class="hero reveal reveal-left" id="promo">
@@ -25,75 +24,11 @@
         <img src="../Imagenes/Promo.svg" alt="Fondo promo">
     </div>
     <button class="button2" id="openPopup">Comprar</button>
-</section>
+  </section>
 
-<!-- Contenedor de tarjetas -->
-<section class="cookies-container reveal reveal-left" id="cookies">
-  <div class="cookie-card" data-type="Chips">
-      <img src="../Imagenes/galletaChips.svg" alt="Galleta Chips" class="cookie-img" />
-      <div class="description-box">
-        <h3 class="cookie-title">Galleta Chips</h3>
-        Galleta con chispas de chocolate, crujiente por fuera y suave por dentro.
-      </div>
-      <div class="cookie-quantity">
-        <span class="quantity-label">Cantidad</span>
-        <div class="quantity-controls">
-          <button class="qty-btn-negative">-</button>
-          <span class="qty-number">0</span>
-          <button class="qty-btn-positive">+</button>
-        </div>
-      </div>
-      <div class="card-buttons">
-        <button class="button">Comprar</button>
-      </div>
-    </div>
-
-    <div class="cookie-card" data-type="Cacao">
-      <img src="../Imagenes/galletaNegra.svg" alt="Galleta Vainilla" class="cookie-img" />
-      <div class="description-box">
-        <h3 class="cookie-title">Galleta Cacao</h3>
-        Galleta de cacao oscuro con relleno cremoso, perfecta para los amantes del chocolate.
-      </div>
-      <div class="cookie-quantity">
-        <span class="quantity-label">Cantidad</span>
-        <div class="quantity-controls">
-            <button class="qty-btn-negative">-</button>
-            <span class="qty-number">0</span>
-            <button class="qty-btn-positive">+</button>
-        </div>
-      </div>
-      <div class="card-buttons">
-        <button class="button">Comprar</button>
-      </div>
-    </div>
-
-    <div class="cookie-card" data-type="Queso">
-      <img src="../Imagenes/galletaQueso.svg" alt="Galleta Frambuesa" class="cookie-img" />
-      <div class="description-box">
-        <h3 class="cookie-title">Galleta Queso</h3>
-        Galleta de queso con un toque salado y textura suave. Ideal para un snack diferente.
-      </div>
-      <div class="cookie-quantity">
-        <span class="quantity-label">Cantidad</span>
-        <div class="quantity-controls">
-            <button class="qty-btn-negative">-</button>
-            <span class="qty-number">0</span>
-            <button class="qty-btn-positive">+</button>
-        </div>
-      </div>
-      <div class="card-buttons">
-        <button class="button">Comprar</button>
-      </div>
-    </div>
-</section>
-
-<!-- Pop-up tarjetas de promociones -->
-<div class="popup-overlay" id="popupOverlay">
-  <div class="popup-content">
-    <h2>Promociones</h2>
-    <div class="popup-cards">
-
-      <div class="cookie-card" data-type="Chips">
+  <!-- Contenedor de tarjetas -->
+  <section class="cookies-container reveal reveal-left" id="cookies">
+    <div class="cookie-card" data-type="Chips">
         <img src="../Imagenes/galletaChips.svg" alt="Galleta Chips" class="cookie-img" />
         <div class="description-box">
           <h3 class="cookie-title">Galleta Chips</h3>
@@ -108,12 +43,12 @@
           </div>
         </div>
         <div class="card-buttons">
-          <button class="button">Comprar</button>
+          <button class="button buy-btn">Comprar</button> <!-- Cambié este botón a buy-btn -->
         </div>
-      </div>
+    </div>
 
-      <div class="cookie-card" data-type="Cacao">
-        <img src="../Imagenes/galletaNegra.svg" alt="Galleta Cacao" class="cookie-img" />
+    <div class="cookie-card" data-type="Cacao">
+        <img src="../Imagenes/galletaNegra.svg" alt="Galleta Vainilla" class="cookie-img" />
         <div class="description-box">
           <h3 class="cookie-title">Galleta Cacao</h3>
           Galleta de cacao oscuro con relleno cremoso, perfecta para los amantes del chocolate.
@@ -121,18 +56,18 @@
         <div class="cookie-quantity">
           <span class="quantity-label">Cantidad</span>
           <div class="quantity-controls">
-            <button class="qty-btn-negative">-</button>
-            <span class="qty-number">0</span>
-            <button class="qty-btn-positive">+</button>
+              <button class="qty-btn-negative">-</button>
+              <span class="qty-number">0</span>
+              <button class="qty-btn-positive">+</button>
           </div>
         </div>
         <div class="card-buttons">
-          <button class="button">Comprar</button>
+          <button class="button buy-btn">Comprar</button> <!-- Cambié este botón a buy-btn -->
         </div>
-      </div>
+    </div>
 
-      <div class="cookie-card" data-type="Queso">
-        <img src="../Imagenes/galletaQueso.svg" alt="Galleta Queso" class="cookie-img" />
+    <div class="cookie-card" data-type="Queso">
+        <img src="../Imagenes/galletaQueso.svg" alt="Galleta Frambuesa" class="cookie-img" />
         <div class="description-box">
           <h3 class="cookie-title">Galleta Queso</h3>
           Galleta de queso con un toque salado y textura suave. Ideal para un snack diferente.
@@ -140,21 +75,83 @@
         <div class="cookie-quantity">
           <span class="quantity-label">Cantidad</span>
           <div class="quantity-controls">
-            <button class="qty-btn-negative">-</button>
-            <span class="qty-number">0</span>
-            <button class="qty-btn-positive">+</button>
+              <button class="qty-btn-negative">-</button>
+              <span class="qty-number">0</span>
+              <button class="qty-btn-positive">+</button>
           </div>
         </div>
         <div class="card-buttons">
-          <button class="button">Comprar</button>
+          <button class="button buy-btn">Comprar</button> <!-- Cambié este botón a buy-btn -->
+        </div>
+    </div>
+  </section>
+
+  <!-- Pop-up tarjetas de promociones -->
+  <div class="popup-overlay" id="popupOverlay">
+    <div class="popup-content">
+      <h2>Promociones</h2>
+      <div class="popup-cards">
+
+        <div class="cookie-card" data-type="Chips">
+          <img src="../Imagenes/galletaChips.svg" alt="Galleta Chips" class="cookie-img" />
+          <div class="description-box">
+            <h3 class="cookie-title">Galleta Chips</h3>
+            Galleta con chispas de chocolate, crujiente por fuera y suave por dentro.
+          </div>
+          <div class="cookie-quantity">
+            <span class="quantity-label">Cantidad</span>
+            <div class="quantity-controls">
+              <button class="qty-btn-negative">-</button>
+              <span class="qty-number">0</span>
+              <button class="qty-btn-positive">+</button>
+            </div>
+          </div>
+          <div class="card-buttons">
+            <button class="button">Comprar</button>
+          </div>
+        </div>
+
+        <div class="cookie-card" data-type="Cacao">
+          <img src="../Imagenes/galletaNegra.svg" alt="Galleta Cacao" class="cookie-img" />
+          <div class="description-box">
+            <h3 class="cookie-title">Galleta Cacao</h3>
+            Galleta de cacao oscuro con relleno cremoso, perfecta para los amantes del chocolate.
+          </div>
+          <div class="cookie-quantity">
+            <span class="quantity-label">Cantidad</span>
+            <div class="quantity-controls">
+              <button class="qty-btn-negative">-</button>
+              <span class="qty-number">0</span>
+              <button class="qty-btn-positive">+</button>
+            </div>
+          </div>
+          <div class="card-buttons">
+            <button class="button">Comprar</button>
+          </div>
+        </div>
+
+        <div class="cookie-card" data-type="Queso">
+          <img src="../Imagenes/galletaQueso.svg" alt="Galleta Queso" class="cookie-img" />
+          <div class="description-box">
+            <h3 class="cookie-title">Galleta Queso</h3>
+            Galleta de queso con un toque salado y textura suave. Ideal para un snack diferente.
+          </div>
+          <div class="cookie-quantity">
+            <span class="quantity-label">Cantidad</span>
+            <div class="quantity-controls">
+              <button class="qty-btn-negative">-</button>
+              <span class="qty-number">0</span>
+              <button class="qty-btn-positive">+</button>
+            </div>
+          </div>
+          <div class="card-buttons">
+            <button class="button">Comprar</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-  </div>
-</div>
-</section>
-<script src="java/compras.js"></script>
+
+  <script src="java/compras.js"></script>
 </body>
 </html>

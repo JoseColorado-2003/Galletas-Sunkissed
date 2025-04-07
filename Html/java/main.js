@@ -107,7 +107,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
-window.addEventListener('beforeunload', function () {
-    // Elimina el usuario logueado cuando el navegador o la pestaña se cierra
-    localStorage.removeItem('usuarioLogeado');
-});
+
+// Elimina el event listener de beforeunload para evitar eliminar al usuario logeado
+// localStorage.removeItem('usuarioLogeado');
