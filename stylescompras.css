@@ -14,7 +14,7 @@
       font-family: Arial, sans-serif;
       scroll-behavior: smooth;
       background-color: var(--color-secundario);
-      background-image: url('../Imagenes/Background.svg');
+      background-image: url('../Galletas-Sunkissed/Imagenes/Background.svg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -97,7 +97,7 @@
     .cookie-card {
       width: 300px;
       background-color: var(--color-secundario);
-      background-image: url('../Imagenes/Background2.svg');
+      background-image: url('../Galletas-Sunkissed/Imagenes/Background2.svg');
       background-size: cover;
       background-position: center;
       border-radius: 15px;
