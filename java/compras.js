@@ -95,14 +95,21 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  const revealElements = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const el = entry.target;
-      el.classList.toggle('show', entry.isIntersecting);
-    });
-  }, { threshold: 0.4 });
-  revealElements.forEach(el => observer.observe(el));
+  if (window.innerWidth > 768) {
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const el = entry.target;
+        el.classList.toggle('show', entry.isIntersecting);
+      });
+    }, { threshold: 0.4 });
+  
+    revealElements.forEach(el => observer.observe(el));
+  } else {
+    // Si estás en móvil, puedes forzar que todos se muestren directamente
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('show'));
+  }
+  
 
   // POPUP DE PROMOCIONES
   let promoCount = 0;
