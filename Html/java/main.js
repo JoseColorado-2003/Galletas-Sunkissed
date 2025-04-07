@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (loginButton) {
                 loginButton.textContent = 'Ir a mi perfil';
                 loginButton.onclick = function () {
-                    window.location.href = 'Perfil.html';
+                    window.location.href = '../Galletas-Sunkissed/Html/Perfil.html';
                 };
             }
         }
