@@ -202,7 +202,7 @@ window.addEventListener('DOMContentLoaded', () => {
       });
 
       if (Object.keys(cantidades).length === 0) {
-        mostrarMensaje("Debes seleccionar al menos una galleta para comprar.");
+
         return;
       }
 
@@ -239,7 +239,7 @@ document.querySelectorAll('.cookie-card .buy-btn').forEach(button => {
 
     // Validar si hay alguna galleta seleccionada
     if (Object.keys(cantidades).length === 0) {
-      mostrarMensaje("Debes seleccionar al menos una galleta para comprar.");
+     
       return;
     }
 
