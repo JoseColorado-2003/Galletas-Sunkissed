@@ -8,13 +8,15 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-image: url('../Galletas-Sunkissed/Imagenes/Background2.svg');
-  background-size: cover;
   background-color: var(--color-secundario);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-image: url('../Galletas-Sunkissed/Imagenes/Background.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Contenedor del Login */
