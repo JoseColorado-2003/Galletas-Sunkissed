@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("JavaScript cargado correctamente");
 
-    const cookiePopup = document.getElementById("cookieModal"); 
+    // Modal de cookies
+    const cookiePopup = document.getElementById("cookieModal");
     const acceptButton = document.querySelector(".cookie-buttons .button:nth-child(2)");
     const declineButton = document.querySelector(".cookie-buttons .button:nth-child(1)");
     const cookieCards = document.querySelectorAll('.cookie-card');
@@ -12,11 +13,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (cookiePopup && acceptButton && declineButton) {
         acceptButton.addEventListener("click", function () {
-            cookiePopup.style.display = "none";  
+            cookiePopup.style.display = "none";
         });
 
         declineButton.addEventListener("click", function () {
-            cookiePopup.style.display = "none";  
+            cookiePopup.style.display = "none";
         });
 
         // Mostrar el modal al cargar la página
@@ -60,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // IntersectionObserver para elementos que deben mostrarse al hacer scroll
     const revealElements = document.querySelectorAll('.reveal');
 
     const observer = new IntersectionObserver((entries) => {
@@ -78,4 +80,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
     revealElements.forEach(el => observer.observe(el));
 
+    // Verificación de usuario logeado y cambio de botón
+    const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+    const usuarioLogeado = localStorage.getItem('usuarioLogeado'); // Obtener el correo del usuario logeado
+
+    // Si el usuario está logeado, cambiamos el botón
+    if (usuarioLogeado) {
+        // Verificamos si el usuario está en el array de usuarios
+        const usuarioEncontrado = usuarios.find(usuario => usuario.correo === usuarioLogeado);
+
+        // Si el usuario existe en el array de usuarios
+        if (usuarioEncontrado) {
+            // Encontramos el botón que lleva al login
+            const loginButton = document.querySelector('.header .button');
+
+            // Si existe el botón
+            if (loginButton) {
+                // Cambiar texto del botón
+                loginButton.textContent = 'Ir a mi perfil';
+
+                // Cambiar la URL del botón para redirigir al perfil del usuario
+                loginButton.onclick = function () {
+                    window.location.href = 'Perfil.html'; // Cambia esto con la ruta del perfil de usuario
+                };
+            }
+        }
+    }
+});
+window.addEventListener('beforeunload', function () {
+    // Elimina el usuario logueado cuando el navegador o la pestaña se cierra
+    localStorage.removeItem('usuarioLogeado');
 });

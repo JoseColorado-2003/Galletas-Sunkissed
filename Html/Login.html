@@ -11,11 +11,11 @@
     <div class="login-box">
       <!-- Logo -->
       <img src="../Imagenes/Group (1).svg" alt="Sunkissed Logo" class="logo" />
-      <h2>Inicia Sesion</h2>
+      <h2>Inicia Sesión</h2>
 
       <!-- Formulario -->
       <form id="loginForm">
-        <input type="text" id="usuario" placeholder="Usuario" required />
+        <input type="text" id="usuario" placeholder="Correo" required />
         <input type="password" id="contrasena" placeholder="Contraseña" required />
         <div class="buttons">
           <button type="button" onclick="location.href='Register.html'" class="button">Registrarse</button>
@@ -32,21 +32,7 @@
     </div>
   </div>
 
-  <!-- Script para redirección según usuario -->
-  <script>
-    document.getElementById('loginForm').addEventListener('submit', function (e) {
-      e.preventDefault(); // Evita el envío tradicional del formulario
-
-      const usuario = document.getElementById('usuario').value;
-      const contrasena = document.getElementById('contrasena').value;
-
-      // Usuario especial que redirige a otra página
-      if (usuario === 'admin' && contrasena === '1234') {
-        window.location.href = '../Html/Admin.html'; // Página especial
-      } else {
-        window.location.href = '../Html/Main.html'; // Página normal para todos
-      }
-    });
-  </script>
+  <!-- Script para manejar el evento de login -->
+  <script src="../Html/java/login.js"></script>
 </body>
 </html>
