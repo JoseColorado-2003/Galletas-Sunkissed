@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     if (!usuario) {
       alert("Usuario no encontrado.");
-      window.location.href = "../Galletas-Sunkissed/";
+      window.location.href = "../Galletas-Sunkissed/index.html";
       return;
     }
   
@@ -33,14 +33,14 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // Cerrar sesión parcial (solo redirigir)
     btnCerrarSesion.addEventListener("click", () => {
-      window.location.href = "../Galletas-Sunkissed/";
+      window.location.href = "../Galletas-Sunkissed/index.html";
     });
   
     // Cerrar sesión completamente (borrar localStorage)
     btnCerrarCompleto.addEventListener("click", () => {
       localStorage.removeItem("usuarioLogeado");
       alert("Sesión finalizada completamente.");
-      window.location.href = "../Galletas-Sunkissed/";
+      window.location.href = "../Galletas-Sunkissed/index.html";
     });
   });
   

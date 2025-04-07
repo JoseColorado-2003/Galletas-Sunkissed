@@ -72,21 +72,27 @@ document.addEventListener("DOMContentLoaded", function () {
     // INTERSECTION OBSERVER
     const revealElements = document.querySelectorAll('.reveal');
 
-    const observer = new IntersectionObserver((entries) => {
+    if (window.innerWidth > 896) {
+      const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            const el = entry.target;
-
-            if (entry.isIntersecting) {
-                el.classList.add('show');
-            } else {
-                el.classList.remove('show');
-            }
+          const el = entry.target;
+    
+          if (entry.isIntersecting) {
+            el.classList.add('show');
+          } else {
+            el.classList.remove('show');
+          }
         });
-    }, {
+      }, {
         threshold: 0.7
-    });
-
-    revealElements.forEach(el => observer.observe(el));
+      });
+    
+      revealElements.forEach(el => observer.observe(el));
+    } else {
+      // En móvil, mostrar directamente sin animación
+      revealElements.forEach(el => el.classList.add('show'));
+    }
+    
 
     // CAMBIAR BOTÓN SI HAY USUARIO
     const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
