@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (usuarioEncontrado) {
       alert("¡Inicio de sesión exitoso!");
       localStorage.setItem('usuarioLogeado', usuario); // Guarda el correo
-      window.location.href = '../Galletas-Sunkissed/index.html';
+      window.location.href = '../Galletas-Sunkissed/';
     } else {
       alert("Correo o contraseña incorrectos.");
     }

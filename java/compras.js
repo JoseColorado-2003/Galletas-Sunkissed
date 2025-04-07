@@ -15,7 +15,7 @@ function mostrarMensaje(mensaje) {
   if (Notification.permission === "granted") {
     new Notification("Sunkissed Galletas", {
       body: mensaje,
-      icon: "../Imagenes/galletaChips.svg"
+      icon: "../Galletas-Sunkissed/Imagenes/galletaChips.svg"
     });
   } else {
     alert(mensaje);
