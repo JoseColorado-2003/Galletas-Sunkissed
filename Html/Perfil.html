@@ -30,15 +30,15 @@
           <h2>Perfil</h2>
           <div class="info-line">
             <p class="label">Nombre:</p>
-            <p class="value">USUARIO</p>
+            <p class="value" id="nombre-usuario">USUARIO</p>
           </div>
           <div class="info-line">
             <p class="label">Correo:</p>
-            <p class="value">CORREO</p>
+            <p class="value" id="correo-usuario">CORREO</p>
           </div>
           <div class="info-line">
-            <p class="label">Historial de compra</p>
-            <p class="value">⋯</p>
+            <p class="label">Historial de compra:</p>
+            <p class="value" id="historial-usuario">⋯</p>
           </div>
         </div>
 
@@ -46,12 +46,14 @@
 
       <!-- Botones -->
       <div class="profile-buttons">
-        <button class="button">Cerrar Sesión</button>
-        <button class="button">Guardar</button>
+        <button class="button" id="cerrar-sesion-btn">Volver</button>
+        <!-- Aquí JS añadirá el botón "Cerrar sesión completamente" -->
       </div>
 
     </div>
   </section>
-
+  <!-- Otros elementos -->
+  <script src="java/perfil.js"></script>
 </body>
 </html>
+

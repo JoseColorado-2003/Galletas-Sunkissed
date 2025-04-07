@@ -1,30 +1,36 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("JavaScript cargado correctamente");
 
-    // Modal de cookies
+    // MODAL DE COOKIES
     const cookiePopup = document.getElementById("cookieModal");
     const acceptButton = document.querySelector(".cookie-buttons .button:nth-child(2)");
     const declineButton = document.querySelector(".cookie-buttons .button:nth-child(1)");
-    const cookieCards = document.querySelectorAll('.cookie-card');
 
-    console.log("cookiePopup:", cookiePopup);
-    console.log("acceptButton:", acceptButton);
-    console.log("declineButton:", declineButton);
+    const cookiesDecision = localStorage.getItem("cookiesDecision");
+    console.log("Decisión de cookies guardada:", cookiesDecision);
 
-    if (cookiePopup && acceptButton && declineButton) {
+    if (!cookiesDecision && cookiePopup && acceptButton && declineButton) {
+        // Mostrar el modal solo si no se ha tomado decisión
+        cookiePopup.style.display = "flex";
+
         acceptButton.addEventListener("click", function () {
+            localStorage.setItem("cookiesDecision", "accepted");
             cookiePopup.style.display = "none";
+            console.log("Cookies aceptadas");
         });
 
         declineButton.addEventListener("click", function () {
+            localStorage.setItem("cookiesDecision", "declined");
             cookiePopup.style.display = "none";
+            console.log("Cookies rechazadas");
         });
-
-        // Mostrar el modal al cargar la página
-        cookiePopup.style.display = "flex";
     } else {
-        console.error("❌ Uno o más elementos no se encontraron en el DOM.");
+        // Ya hay decisión, no mostramos el modal
+        if (cookiePopup) cookiePopup.style.display = "none";
     }
+
+    // EXPANSIÓN DE TARJETAS
+    const cookieCards = document.querySelectorAll('.cookie-card');
 
     cookieCards.forEach(card => {
         card.addEventListener('click', function () {
@@ -37,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // SCROLL SUAVE
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -51,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // EXPANDIR TODAS LAS TARJETAS
     const expandAllButton = document.getElementById("expandAll");
 
     if (expandAllButton) {
@@ -61,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // IntersectionObserver para elementos que deben mostrarse al hacer scroll
+    // INTERSECTION OBSERVER
     const revealElements = document.querySelectorAll('.reveal');
 
     const observer = new IntersectionObserver((entries) => {
@@ -75,38 +83,27 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }, {
-        threshold: 0.7 // porcentaje visible antes de activar
+        threshold: 0.7
     });
 
     revealElements.forEach(el => observer.observe(el));
 
-    // Verificación de usuario logeado y cambio de botón
+    // CAMBIAR BOTÓN SI HAY USUARIO
     const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-    const usuarioLogeado = localStorage.getItem('usuarioLogeado'); // Obtener el correo del usuario logeado
+    const usuarioLogeado = localStorage.getItem('usuarioLogeado');
 
-    // Si el usuario está logeado, cambiamos el botón
     if (usuarioLogeado) {
-        // Verificamos si el usuario está en el array de usuarios
         const usuarioEncontrado = usuarios.find(usuario => usuario.correo === usuarioLogeado);
 
-        // Si el usuario existe en el array de usuarios
         if (usuarioEncontrado) {
-            // Encontramos el botón que lleva al login
             const loginButton = document.querySelector('.header .button');
 
-            // Si existe el botón
             if (loginButton) {
-                // Cambiar texto del botón
                 loginButton.textContent = 'Ir a mi perfil';
-
-                // Cambiar la URL del botón para redirigir al perfil del usuario
                 loginButton.onclick = function () {
-                    window.location.href = 'Perfil.html'; // Cambia esto con la ruta del perfil de usuario
+                    window.location.href = 'Perfil.html';
                 };
             }
         }
     }
 });
-
-// Elimina el event listener de beforeunload para evitar eliminar al usuario logeado
-// localStorage.removeItem('usuarioLogeado');
