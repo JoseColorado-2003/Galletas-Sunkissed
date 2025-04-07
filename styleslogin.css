@@ -8,7 +8,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-image: url('../Galletas-Sunkissed/Imagenes/Background2.svg') no-repeat center center fixed;
+  background-image: url('../Galletas-Sunkissed/Imagenes/Background2.svg');
   background-size: cover;
   background-color: var(--color-secundario);
   display: flex;
