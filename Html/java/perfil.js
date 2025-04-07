@@ -33,14 +33,14 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // Cerrar sesión parcial (solo redirigir)
     btnCerrarSesion.addEventListener("click", () => {
-      window.location.href = "main.html";
+      window.location.href = "index.html";
     });
   
     // Cerrar sesión completamente (borrar localStorage)
     btnCerrarCompleto.addEventListener("click", () => {
       localStorage.removeItem("usuarioLogeado");
       alert("Sesión finalizada completamente.");
-      window.location.href = "main.html";
+      window.location.href = "index.html";
     });
   });
   

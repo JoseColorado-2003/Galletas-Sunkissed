@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (usuarioEncontrado) {
       alert("¡Inicio de sesión exitoso!");
       localStorage.setItem('usuarioLogeado', usuario); // Guarda el correo
-      window.location.href = '../Html/Main.html';
+      window.location.href = '../Html/index.html';
     } else {
       alert("Correo o contraseña incorrectos.");
     }
