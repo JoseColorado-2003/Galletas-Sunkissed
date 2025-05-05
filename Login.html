@@ -13,15 +13,16 @@
       <img src="../Galletas-Sunkissed/Imagenes/Group (1).svg" alt="Sunkissed Logo" class="logo" />
       <h2>Inicia Sesión</h2>
 
-      <!-- Formulario -->
-      <form id="loginForm">
-        <input type="text" id="usuario" placeholder="Correo" required />
-        <input type="password" id="contrasena" placeholder="Contraseña" required />
-        <div class="buttons">
-          <button type="button" onclick="location.href='../Galletas-Sunkissed/Register.html'" class="button">Registrarse</button>
-          <button type="submit" class="button">Entrar</button>
-        </div>
-      </form>
+ <form id="loginForm" action="login.php" method="POST">
+  <input type="email" id="correo" name="correo" placeholder="Correo" required />
+  <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required />
+  <div class="buttons">
+      <button type="button" onclick="location.href='../Galletas-Sunkissed/Register.html'" class="button">Registrarse</button>
+      <button type="submit" class="button">Entrar</button>
+  </div>
+</form>
+
+    
 
       <!-- Login con Google -->
       <div class="google-login">
@@ -33,6 +34,6 @@
   </div>
 
   <!-- Script para manejar el evento de login -->
-  <script src="java/login.js"></script>
+   <!-- <script src="java/login.js"></script>-->
 </body>
 </html>

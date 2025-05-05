@@ -13,26 +13,25 @@
                 <img src="../Galletas-Sunkissed/Imagenes/Group (1).svg" alt="Sunkissed Logo">
             </div>
             <h2>Regístrate</h2>
-            <form id="registerForm">
-                <input type="text" id="nombre" placeholder="Nombre" required>
-                <input type="email" id="correo" placeholder="Correo" required>
-                <input type="password" id="contrasena" placeholder="Contraseña" required>
-                <input type="password" id="confirmarContrasena" placeholder="Confirmar contraseña" required>
+            <form id="registerForm" action="../Galletas-Sunkissed/register.php" method="POST">
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+                <input type="email" id="correo" name="correo" placeholder="Correo" required>
+                <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required>
+                <input type="password" id="confirmarContrasena" name="confirmarContrasena" placeholder="Confirmar contraseña" required>                
                 <div class="register-buttons">
                     <button class="button" type="button" onclick="location.href='../Galletas-Sunkissed/index.html'">Regresar</button>
                     <button class="button" type="submit">Registrarse</button>
                 </div>
                 <div class="google-login">
-                    <button class="google-button">
+                    <button class="google-button" type="button">
                         <img src="../Galletas-Sunkissed/Imagenes/icongoogle.svg" alt="Google"> Continuar con Google
                     </button>
-                </div>
+                </div>        
             </form>
         </div>
-      </form>
     </div>
 
     <!-- Añadir el script de JavaScript -->
-    <script src="java/register.js"></script>
+   <!-- <script src="java/register.js"></script>-->
 </body>
 </html>
