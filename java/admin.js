@@ -34,26 +34,26 @@ function cargarUsuarios(filtros = {}) {
       tr.innerHTML = '<td colspan="5">No se encontraron usuarios</td>';
       tbody.appendChild(tr);
     }
+// Agregar los usuarios a la tabla
+usuarios.forEach(usuario => {
+  const tr = document.createElement('tr');
 
-    // Agregar los usuarios a la tabla
-    usuarios.forEach(usuario => {
-      const tr = document.createElement('tr');
+  // Crear las celdas con los datos del usuario
+  tr.innerHTML = `
+    <td>${usuario.IDnombre}</td>
+    <td>${usuario.IDcorreo}</td>
+    <td>${usuario.galleta}</td>
+    <td>${usuario.cantidad}</td>
+    <td>
+      <button onclick="window.location.href='editarUsuario.php?id=${usuario.IDusuario}'">Editar</button>
+      <button onclick="copiarUsuario(${usuario.IDusuario})">Copiar</button>
+      <button onclick="borrarUsuario(${usuario.IDusuario})">Borrar</button>
+    </td>
+  `;
 
-      // Crear las celdas con los datos del usuario
-      tr.innerHTML = `
-        <td>${usuario.IDnombre}</td>
-        <td>${usuario.IDcorreo}</td>
-        <td>${usuario.galleta}</td>
-        <td>${usuario.cantidad}</td>
-        <td>
-          <button onclick="editarUsuario(${usuario.IDusuario})">Editar</button>
-          <button onclick="copiarUsuario(${usuario.IDusuario})">Copiar</button>
-          <button onclick="borrarUsuario(${usuario.IDusuario})">Borrar</button>
-        </td>
-      `;
+  tbody.appendChild(tr);  // Agregar la fila a la tabla
+});
 
-      tbody.appendChild(tr);
-    });
   })
   .catch(error => {
     console.error('Error al cargar usuarios:', error);

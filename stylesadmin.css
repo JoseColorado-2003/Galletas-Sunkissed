@@ -1,10 +1,4 @@
-:root {
-  --color-primario: #A06F4C;
-  --color-secundario: #EFD8B1;
-  --color-negro: #000000;
-  --color-blanco: #FFFFFF;
-}
-
+/* General */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -14,165 +8,98 @@ body {
   background-image: url('../Galletas-Sunkissed/Imagenes/Background2.svg');
 }
 
-.filtros {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.filtros select {
-  padding: 8px 12px;
-  border: 1px solid var(--color-primario);
+.container {
+  background-color: var(--color-blanco);
   border-radius: 10px;
-  font-size: 14px;
-  color: var(--color-primario);
-}
-
-.admin-container {
-  padding: 30px;
-  max-width: 1000px;
+  padding: 20px;
+  max-width: 600px;
   margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
 }
 
-h1 {
+h2 {
   text-align: center;
-  margin-bottom: 30px;
-}
-
-.admin-table {
-  width: 100%;
-  border-collapse: collapse;
+  color: var(--color-primario);
   margin-bottom: 20px;
-  background-color: var(--color-secundario);
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px var(--color-primario);
 }
 
-.admin-table th,
-.admin-table td {
-  padding: 12px 15px;
-  border-bottom: 1px solid var(--color-secundario);
-  text-align: center;
+.form-group {
+  margin-bottom: 20px;
 }
 
-.admin-table th {
-  background-color: var(--color-primario);
-  color: var(--color-secundario);
-}
-
-.edit-btn {
-  background-color: var(--color-primario);
-  color: var(--color-secundario);
-  border: none;
-  padding: 6px 12px;
-  border-radius: 20px;
-  cursor: pointer;
-  margin: 2px;
-  transition: background-color 0.3s;
-}
-
-.edit-btn:hover {
-  background-color: #895b3a;
-}
-
-.add-btn {
+label {
   display: block;
-  margin: 10px auto 30px;
-  padding: 10px 16px;
+  font-weight: bold;
+  color: var(--color-primario);
+  margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--color-primario);
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus {
+  border-color: #895b3a;  /* Resalta el borde con un color más oscuro */
+  outline: none;
+}
+
+button {
   background-color: var(--color-primario);
   color: var(--color-secundario);
+  padding: 12px 20px;
   border: none;
   border-radius: 20px;
+  font-size: 16px;
   cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #895b3a; /* Color al pasar el mouse */
+}
+
+button:active {
+  background-color: #6c4b32; /* Color al hacer clic */
+}
+
+.error-message,
+.success-message {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+}
+
+.success-message {
+  color: green;
   font-weight: bold;
-}
-
-/* Nueva fila para botón debajo del historial */
-.add-btn-row td {
-  padding: 12px;
-  text-align: center;
-  background-color: var(--color-secundario);
-  border-top: 1px dashed var(--color-primario);
-}
-
-.add-btn-cell {
-  text-align: center;
-}
-
-.add-btn-row .add-btn {
-  margin: 10px auto;
-}
-
-.admin-logo {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-}
-
-.admin-logo img {
-  max-width: 200px;
-  height: auto;
 }
 
 /* Responsive */
 @media screen and (max-width: 600px) {
-  .admin-container {
-    padding: 20px;
-  }
-
-  .admin-table thead {
-    display: none;
-  }
-
-  .admin-table,
-  .admin-table tbody,
-  .admin-table tr,
-  .admin-table td {
-    display: block;
-    width: 100%;
-  }
-
-  .admin-table tr {
-    margin-bottom: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px var(--color-primario);
+  .container {
     padding: 15px;
   }
 
-  .admin-table td {
-    padding: 10px;
-    text-align: right;
-    position: relative;
+  button {
+    font-size: 14px;
   }
 
-  .admin-table td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 10px;
-    text-align: left;
-    font-weight: bold;
-    color: var(--color-primario);
+  .form-group {
+    margin-bottom: 15px;
   }
 
-  .edit-btn {
-    width: 100%;
-    margin-top: 10px;
-  }
-
-  .add-btn {
-    width: 100%;
-    margin: 10px 0;
-  }
-
-  .add-btn-row td {
-    text-align: center;
-  }
-
-  .admin-logo img {
-    max-width: 150px;
+  label {
+    font-size: 14px;
   }
 }

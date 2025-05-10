@@ -1,53 +1,72 @@
 <?php
-// Usamos la misma base de datos 'galletassunkissed' que en el login.php
+// Conexión a la base de datos
 $conexion = new mysqli("localhost", "root", "", "galletassunkissed");
 
-// Verificar la conexión
-if ($conexion->connect_error) {
-    http_response_code(500);
-    echo json_encode(["error" => "Error de conexión: " . $conexion->connect_error]);
-    exit();
-}
+if (isset($_GET['id'])) {
+    $idusuario = $_GET['id'];
 
-// Obtener los filtros de la URL
-$nombre = isset($_GET['nombre']) ? $_GET['nombre'] : '';
-$correo = isset($_GET['correo']) ? $_GET['correo'] : '';
-$galleta = isset($_GET['galleta']) ? $_GET['galleta'] : '';
-$cantidad = isset($_GET['cantidad']) ? $_GET['cantidad'] : '';
-
-// Crear la consulta con los filtros
-$sql = "SELECT IDusuario, IDnombre, IDcorreo, galleta, cantidad FROM usuarios WHERE 1";
-
-if ($nombre) {
-    $sql .= " AND IDnombre LIKE '%$nombre%'";
-}
-if ($correo) {
-    $sql .= " AND IDcorreo LIKE '%$correo%'";
-}
-if ($galleta) {
-    $sql .= " AND galleta LIKE '%$galleta%'";
-}
-if ($cantidad) {
-    $sql .= " AND cantidad = '$cantidad'";
-}
-
-// Ejecutar la consulta
-$resultado = $conexion->query($sql);
-
-$usuarios = [];
-
-// Verificar si se encontraron usuarios
-if ($resultado->num_rows > 0) {
-    while ($fila = $resultado->fetch_assoc()) {
-        $usuarios[] = $fila;
+    // Consulta para obtener la información del usuario
+    $sql = "SELECT * FROM usuarios WHERE IDusuario = $idusuario";
+    $resultado = $conexion->query($sql);
+    
+    if ($resultado->num_rows > 0) {
+        $usuario = $resultado->fetch_assoc();  // Obtener datos del usuario
+    } else {
+        echo "Usuario no encontrado";
+        exit;
     }
 } else {
-    echo json_encode(["mensaje" => "No se encontraron usuarios"]);
+    echo "ID de usuario no proporcionado.";
+    exit;
 }
 
-$conexion->close();
-
-// Devolver los datos en formato JSON
-header('Content-Type: application/json');
-echo json_encode($usuarios);
+$conexion->close();  // Cerrar conexión a la base de datos
 ?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Usuario</title>
+  <link rel="stylesheet" href="../Galletas-Sunkissed/stylesadmin.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h2>Editar Usuario</h2>
+
+    <form action="actualizarUsuario.php" method="POST">
+      <!-- Campo oculto para el ID del usuario -->
+      <input type="hidden" name="idusuario" value="<?php echo $usuario['IDusuario']; ?>">
+
+      <!-- Campo para el nombre del usuario -->
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="<?php echo $usuario['IDnombre']; ?>" required>
+      </div>
+
+      <!-- Campo para el correo del usuario -->
+      <div class="form-group">
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo" value="<?php echo $usuario['IDcorreo']; ?>" required>
+      </div>
+
+      <!-- Campo para el nombre de la galleta -->
+      <div class="form-group">
+        <label for="galleta">Galleta:</label>
+        <input type="text" id="galleta" name="galleta" value="<?php echo $usuario['galleta']; ?>">
+      </div>
+
+      <!-- Campo para la cantidad -->
+      <div class="form-group">
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" value="<?php echo $usuario['cantidad']; ?>" min="0">
+      </div>
+
+      <button type="submit">Actualizar Usuario</button>
+    </form>
+  </div>
+
+</body>
+</html>
