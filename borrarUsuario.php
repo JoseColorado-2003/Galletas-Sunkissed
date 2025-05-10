@@ -1,30 +1,27 @@
 <?php
-// Usamos la misma base de datos 'galletassunkissed'
-$conexion = new mysqli("localhost", "root", "", "galletassunkissed");
+if (isset($_GET['id'])) {
+    $idusuario = $_GET['id'];
 
-// Verificar la conexión
-if ($conexion->connect_error) {
-    http_response_code(500);
-    echo json_encode(["error" => "Error de conexión: " . $conexion->connect_error]);
-    exit();
+    // Conexión a la base de datos
+    $conexion = new mysqli("localhost", "root", "", "galletassunkissed");
+
+    // Verificamos si la conexión fue exitosa
+    if ($conexion->connect_error) {
+        die("Conexión fallida: " . $conexion->connect_error);
+    }
+
+    // Eliminar el usuario de la base de datos
+    $sql = "DELETE FROM usuarios WHERE IDusuario = $idusuario";
+
+    if ($conexion->query($sql) === TRUE) {
+        echo "Usuario borrado correctamente.";
+
+        // Redirigir automáticamente a admin.html después de 2 segundos
+        echo "<script>setTimeout(function(){ window.location.href = 'admin.html'; }, 2000);</script>";
+    } else {
+        echo "Error al eliminar el usuario: " . $conexion->error;
+    }
+
+    $conexion->close();
 }
-
-// Obtener el ID del usuario desde la URL
-$idUsuario = isset($_GET['id']) ? $_GET['id'] : null;
-
-if (!$idUsuario) {
-    echo json_encode(["error" => "ID de usuario no proporcionado"]);
-    exit();
-}
-
-// Eliminar el usuario de la base de datos
-$sql = "DELETE FROM usuarios WHERE IDusuario = '$idUsuario'";
-
-if ($conexion->query($sql) === TRUE) {
-    echo json_encode(["mensaje" => "Usuario borrado con éxito"]);
-} else {
-    echo json_encode(["error" => "Error al borrar usuario: " . $conexion->error]);
-}
-
-$conexion->close();
 ?>

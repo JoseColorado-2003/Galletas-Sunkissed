@@ -1,59 +1,105 @@
-/* General */
+:root {
+  --color-primario: #A06F4C;
+  --color-secundario: #EFD8B1;
+  --color-negro: #000000;
+  --color-blanco: #FFFFFF;
+  --color-hover: #895b3a; /* Color al pasar el ratón */
+}
+
+/* Estilos generales */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 20px;
-  background-color: var(--color-secundario);
+  padding: 0;
+  background-color: var(--color-secundario); /* Fondo de toda la página */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Usamos toda la altura de la ventana */
   color: var(--color-primario);
-  background-image: url('../Galletas-Sunkissed/Imagenes/Background2.svg');
 }
 
-.container {
-  background-color: var(--color-blanco);
+/* Contenedor principal para el logo y el título */
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-primario); /* Fondo de todo el contenedor */
+  padding: 20px;
+  margin-bottom: 30px;
   border-radius: 10px;
-  padding: 20px;
-  max-width: 600px;
-  margin: 0 auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 30px;
 }
 
-h2 {
-  text-align: center;
-  color: var(--color-primario);
-  margin-bottom: 20px;
+/* Contenido del contenedor, logo y título */
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.form-group {
-  margin-bottom: 20px;
+.admin-logo img {
+  width: 100px; /* Ajusta el tamaño del logo según tus necesidades */
+  height: auto;
 }
 
-label {
-  display: block;
+h1 {
+  color: var(--color-blanco); /* Color blanco para el título */
+  font-size: 2rem;
+  margin: 0;
   font-weight: bold;
-  color: var(--color-primario);
-  margin-bottom: 8px;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="number"] {
-  width: 100%;
+/* Filtros */
+.filtros {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+select {
   padding: 10px;
-  border: 1px solid var(--color-primario);
   border-radius: 5px;
+  border: 1px solid var(--color-primario);
   font-size: 14px;
-  box-sizing: border-box;
+  color: var(--color-primario);
+  background-color: var(--color-blanco);
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="number"]:focus {
-  border-color: #895b3a;  /* Resalta el borde con un color más oscuro */
+select:focus {
   outline: none;
+  border-color: var(--color-hover);
 }
 
-button {
+/* Estilo de la tabla */
+.admin-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.admin-table th, .admin-table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid var(--color-primario);
+}
+
+.admin-table th {
+  background-color: var(--color-primario);
+  color: var(--color-blanco);
+}
+
+.volver-btn-container {
+  text-align: center;
+  margin-top: 20px; /* Espacio entre la tabla y el botón */
+}
+
+.volver-btn-container a {
+  text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+.volver-btn-container .button {
   background-color: var(--color-primario);
   color: var(--color-secundario);
   padding: 12px 20px;
@@ -61,45 +107,15 @@ button {
   border-radius: 20px;
   font-size: 16px;
   cursor: pointer;
-  width: 100%;
+  width: auto;
   transition: background-color 0.3s ease;
+  margin-top: 20px;
 }
 
-button:hover {
-  background-color: #895b3a; /* Color al pasar el mouse */
+.volver-btn-container .button:hover {
+  background-color: var(--color-hover);
 }
 
-button:active {
-  background-color: #6c4b32; /* Color al hacer clic */
-}
-
-.error-message,
-.success-message {
-  color: red;
-  font-size: 14px;
-  text-align: center;
-}
-
-.success-message {
-  color: green;
-  font-weight: bold;
-}
-
-/* Responsive */
-@media screen and (max-width: 600px) {
-  .container {
-    padding: 15px;
-  }
-
-  button {
-    font-size: 14px;
-  }
-
-  .form-group {
-    margin-bottom: 15px;
-  }
-
-  label {
-    font-size: 14px;
-  }
+.volver-btn-container .button:active {
+  background-color: #6c4b32;
 }

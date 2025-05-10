@@ -8,7 +8,15 @@
 </head>
 <body>
 
-  <h1>Panel de Administración</h1>
+  <!-- Contenedor principal para el título y el logo -->
+  <div class="header-container">
+    <div class="header-content">
+      <div class="admin-logo">
+        <img src="../Galletas-Sunkissed/Imagenes/Group (1).svg" alt="Logo Sunkissed">
+      </div>
+      <h1>Panel de Administración</h1>
+    </div>
+  </div>
 
   <div class="filtros">
     <select id="filtroNombre">
@@ -43,9 +51,13 @@
     </tbody>
   </table>
 
-  <div class="admin-logo">
-    <img src="../Galletas-Sunkissed/Imagenes/Group (1).svg" alt="Logo Sunkissed">
+  <!-- Botón para volver a index.html -->
+  <div class="volver-btn-container">
+    <a href="../Galletas-Sunkissed/index.html">
+      <button class="button">Volver a Inicio</button>
+    </a>
   </div>
+  
 
   <script src="java/admin.js"></script>
 </body>
