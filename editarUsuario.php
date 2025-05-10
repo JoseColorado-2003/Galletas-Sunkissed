@@ -1,34 +1,53 @@
 <?php
-// Obtener el ID del usuario
-$idusuario = $_GET['id'];
+// Usamos la misma base de datos 'galletassunkissed' que en el login.php
+$conexion = new mysqli("localhost", "root", "", "galletassunkissed");
 
-// Conexión a la base de datos
-$conexion = new mysqli("localhost", "root", "", "galletasunkissed");
+// Verificar la conexión
+if ($conexion->connect_error) {
+    http_response_code(500);
+    echo json_encode(["error" => "Error de conexión: " . $conexion->connect_error]);
+    exit();
+}
 
+// Obtener los filtros de la URL
+$nombre = isset($_GET['nombre']) ? $_GET['nombre'] : '';
+$correo = isset($_GET['correo']) ? $_GET['correo'] : '';
+$galleta = isset($_GET['galleta']) ? $_GET['galleta'] : '';
+$cantidad = isset($_GET['cantidad']) ? $_GET['cantidad'] : '';
 
-$sql = "SELECT * FROM usuarios WHERE IDusuario = $idusuario";
+// Crear la consulta con los filtros
+$sql = "SELECT IDusuario, IDnombre, IDcorreo, galleta, cantidad FROM usuarios WHERE 1";
+
+if ($nombre) {
+    $sql .= " AND IDnombre LIKE '%$nombre%'";
+}
+if ($correo) {
+    $sql .= " AND IDcorreo LIKE '%$correo%'";
+}
+if ($galleta) {
+    $sql .= " AND galleta LIKE '%$galleta%'";
+}
+if ($cantidad) {
+    $sql .= " AND cantidad = '$cantidad'";
+}
+
+// Ejecutar la consulta
 $resultado = $conexion->query($sql);
-$usuario = $resultado->fetch_assoc();
 
-// Mostrar el formulario con los datos del usuario
-?>
-<form action="actualizarUsuario.php" method="POST">
-  <input type="hidden" name="idusuario" value="<?php echo $usuario['IDusuario']; ?>">
-  
-  <label for="nombre">Nombre:</label>
-  <input type="text" name="nombre" value="<?php echo $usuario['IDnombre']; ?>" required><br>
-  
-  <label for="correo">Correo:</label>
-  <input type="email" name="correo" value="<?php echo $usuario['IDcorreo']; ?>" required><br>
+$usuarios = [];
 
-  <label for="galleta">Tipo de Galleta:</label>
-  <input type="text" name="galleta" value="<?php echo $usuario['galleta']; ?>" required><br>
-  
-  <label for="cantidad">Cantidad:</label>
-  <input type="number" name="cantidad" value="<?php echo $usuario['cantidad']; ?>" required><br>
+// Verificar si se encontraron usuarios
+if ($resultado->num_rows > 0) {
+    while ($fila = $resultado->fetch_assoc()) {
+        $usuarios[] = $fila;
+    }
+} else {
+    echo json_encode(["mensaje" => "No se encontraron usuarios"]);
+}
 
-  <button type="submit">Actualizar Usuario</button>
-</form>
-<?php
 $conexion->close();
+
+// Devolver los datos en formato JSON
+header('Content-Type: application/json');
+echo json_encode($usuarios);
 ?>

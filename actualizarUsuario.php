@@ -6,7 +6,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $galleta = $_POST['galleta'];
     $cantidad = $_POST['cantidad'];
 
-    $conexion = new mysqli("localhost", "root", "", "sunkissed");
+    // Cambiar la base de datos 'sunkissed' por 'galletassunkissed'
+    $conexion = new mysqli("localhost", "root", "", "galletassunkissed");
 
     $sql = "UPDATE usuarios SET IDnombre='$nombre', IDcorreo='$correo', galleta='$galleta', cantidad='$cantidad' WHERE IDusuario=$idusuario";
     if ($conexion->query($sql) === TRUE) {
