@@ -2,26 +2,36 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('loginForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
-    const usuario = document.getElementById('usuario').value.trim();
+    const correo = document.getElementById('correo').value.trim();
     const contrasena = document.getElementById('contrasena').value.trim();
+    const errorBox = document.getElementById('errorBox');
 
-    const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-
-    if (usuario === "admin" && contrasena === "admin") {
-      alert("¡Bienvenido, Admin!");
+    // Verifica si es el admin
+    if (correo === "admin@hotmail.com" && contrasena === "admin") {
       localStorage.setItem('usuarioLogeado', 'admin');
       window.location.href = '../Galletas-Sunkissed/Admin.html';
       return;
     }
 
-    const usuarioEncontrado = usuarios.find(u => u.correo === usuario && u.contrasena === contrasena);
-
-    if (usuarioEncontrado) {
-      alert("¡Inicio de sesión exitoso!");
-      localStorage.setItem('usuarioLogeado', usuario); // Guarda el correo
-      window.location.href = '../Galletas-Sunkissed/index.html';
-    } else {
-      alert("Correo o contraseña incorrectos.");
+    // Validar formato de correo
+    if (!correo.includes('@')) {
+      mostrarError("Por favor ingresa un correo válido.");
+      return;
     }
+
+    // Envía el formulario al PHP para validar usuarios normales
+    this.submit();
   });
+
+  function mostrarError(mensaje) {
+    let errorBox = document.getElementById('errorBox');
+    if (!errorBox) {
+      errorBox = document.createElement('div');
+      errorBox.id = 'errorBox';
+      errorBox.style.color = 'red';
+      errorBox.style.marginTop = '10px';
+      document.querySelector('.login-box').appendChild(errorBox);
+    }
+    errorBox.textContent = mensaje;
+  }
 });

@@ -92,24 +92,20 @@ document.addEventListener("DOMContentLoaded", function () {
       // En móvil, mostrar directamente sin animación
       revealElements.forEach(el => el.classList.add('show'));
     }
-    
 
-    // CAMBIAR BOTÓN SI HAY USUARIO
-    const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-    const usuarioLogeado = localStorage.getItem('usuarioLogeado');
+// CAMBIAR BOTÓN SI HAY USUARIO
+const usuarioLogeado = localStorage.getItem('usuarioLogeado');
 
-    if (usuarioLogeado) {
-        const usuarioEncontrado = usuarios.find(usuario => usuario.correo === usuarioLogeado);
+if (usuarioLogeado) {
+    const usuario = JSON.parse(usuarioLogeado); // Decodificamos el objeto guardado
+    const loginButton = document.querySelector('.header .button');
 
-        if (usuarioEncontrado) {
-            const loginButton = document.querySelector('.header .button');
-
-            if (loginButton) {
-                loginButton.textContent = 'Ir a mi perfil';
-                loginButton.onclick = function () {
-                    window.location.href = '../Galletas-Sunkissed/Perfil.html';
-                };
-            }
-        }
+    if (loginButton) {
+        loginButton.textContent = 'Ir a mi perfil';
+        loginButton.onclick = function () {
+            window.location.href = '../Galletas-Sunkissed/Perfil.html';
+        };
     }
+}
+
 });

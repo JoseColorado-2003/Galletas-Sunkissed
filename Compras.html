@@ -16,15 +16,15 @@
             <a href="#compras">Compras</a>
         </nav>
 
-        <button class="button" onclick="location.href='../Galletas-Sunkissed/Login.html'">Ingresar</button>
+        <button class="button" id="loginButton" onclick="checkLoginStatus()">Ingresar</button>
     </section>
 
-  <section class="hero reveal reveal-left" id="promo">
-    <div class="hero-background">
-        <img src="../Galletas-Sunkissed/Imagenes/Promo.svg" alt="Fondo promo">
-    </div>
-    <button class="button2" id="openPopup">Comprar</button>
-  </section>
+    <section class="hero reveal reveal-left" id="promo">
+      <div class="hero-background">
+          <img src="../Galletas-Sunkissed/Imagenes/Promo.svg" alt="Fondo promo">
+      </div>
+      <button class="button2" id="openPopup">Comprar</button>
+    </section>
 
   <!-- Contenedor de tarjetas -->
   <section class="cookies-container reveal reveal-left" id="cookies">
@@ -167,5 +167,23 @@
   </div>
 
   <script src="java/compras.js"></script>
+  <script>
+    function checkLoginStatus() {
+        const usuario = localStorage.getItem('usuarioLogeado');
+        const loginButton = document.getElementById('loginButton');
+
+        if (usuario) {
+            loginButton.textContent = 'Ver Perfil';
+            loginButton.onclick = function() {
+                location.href = 'perfil.html';
+            };
+        } else {
+            location.href = '../Galletas-Sunkissed/Login.html';
+        }
+    }
+
+    // Revisamos login automáticamente al cargar
+    document.addEventListener('DOMContentLoaded', checkLoginStatus);
+  </script>
 </body>
 </html>

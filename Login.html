@@ -13,16 +13,19 @@
       <img src="../Galletas-Sunkissed/Imagenes/Group (1).svg" alt="Sunkissed Logo" class="logo" />
       <h2>Inicia Sesión</h2>
 
- <form id="loginForm" action="login.php" method="POST">
-  <input type="email" id="correo" name="correo" placeholder="Correo" required />
-  <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required />
-  <div class="buttons">
-      <button type="button" onclick="location.href='../Galletas-Sunkissed/Register.html'" class="button">Registrarse</button>
-      <button type="submit" class="button">Entrar</button>
-  </div>
-</form>
+      <!-- Caja para mostrar errores -->
+      <div id="errorBox" style="display:none; background-color:#ffe0e0; color:#b30000; padding:10px; border-radius:8px; margin-bottom:15px; text-align:center;">
+      </div>
 
-    
+      <!-- Formulario -->
+      <form id="loginForm" action="login.php" method="POST">
+        <input type="email" id="correo" name="correo" placeholder="Correo" required />
+        <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required />
+        <div class="buttons">
+            <button type="button" onclick="location.href='../Galletas-Sunkissed/Register.html'" class="button">Registrarse</button>
+            <button type="submit" class="button">Entrar</button>
+        </div>
+      </form>
 
       <!-- Login con Google -->
       <div class="google-login">
@@ -33,7 +36,18 @@
     </div>
   </div>
 
-  <!-- Script para manejar el evento de login -->
-   <!-- <script src="java/login.js"></script>-->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const errorBox = document.getElementById('errorBox');
+      if (params.get('error') === '1') {
+        errorBox.style.display = 'block';
+        errorBox.textContent = 'Usuario no encontrado. Verifica tu correo.';
+      } else if (params.get('error') === '2') {
+        errorBox.style.display = 'block';
+        errorBox.textContent = 'Contraseña incorrecta. Intenta nuevamente.';
+      }
+    });
+  </script>
 </body>
 </html>
