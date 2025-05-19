@@ -102,5 +102,22 @@
             <a id="loginFooter" href="Login.html">Iniciar sesión</a>
         </div>
     </footer>
+
+    <!-- Script para manejar el login dinámico -->
+    <script src="java/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const usuarioLogeado = localStorage.getItem('usuarioLogeado');
+            const loginButton = document.getElementById('loginButton');
+            const loginFooter = document.getElementById('loginFooter');
+
+            if (usuarioLogeado) {
+                loginButton.textContent = 'Ver Perfil';
+                loginButton.onclick = () => location.href = 'perfil.html';
+                loginFooter.textContent = 'Ver Perfil';
+                loginFooter.href = 'perfil.html';
+            }
+        });
+    </script>
 </body>
 </html>
