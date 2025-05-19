@@ -8,17 +8,18 @@
 </head>
 <body>
 
-  <!-- Contenedor principal para el título y el logo -->
-  <div class="header-container">
+  <!-- Encabezado -->
+  <header class="header-container">
     <div class="header-content">
       <div class="admin-logo">
         <img src="../Galletas-Sunkissed/Imagenes/Group (1).svg" alt="Logo Sunkissed">
       </div>
       <h1>Panel de Administración</h1>
     </div>
-  </div>
+  </header>
 
-  <div class="filtros">
+  <!-- Filtros -->
+  <section class="filtros">
     <select id="filtroNombre">
       <option value="">Filtrar por nombre</option>
     </select>
@@ -34,30 +35,32 @@
     <select id="filtroCantidad">
       <option value="">Filtrar por cantidad</option>
     </select>
-  </div>
+  </section>
 
-  <table class="admin-table" id="adminTable">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Correo</th>
-        <th>Tipo de Galleta</th>
-        <th>Cantidad</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Las filas de usuarios se cargarán dinámicamente con JavaScript -->
-    </tbody>
-  </table>
+  <!-- Tabla de usuarios -->
+  <main>
+    <table class="admin-table" id="adminTable">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Tipo de Galleta</th>
+          <th>Cantidad</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Las filas se llenarán dinámicamente -->
+      </tbody>
+    </table>
+  </main>
 
-  <!-- Botón para volver a index.html -->
+  <!-- Botón de volver -->
   <div class="volver-btn-container">
     <a href="../Galletas-Sunkissed/index.html">
       <button class="button">Volver a Inicio</button>
     </a>
   </div>
-  
 
   <script src="java/admin.js"></script>
 </body>

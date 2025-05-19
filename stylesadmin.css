@@ -3,48 +3,42 @@
   --color-secundario: #EFD8B1;
   --color-negro: #000000;
   --color-blanco: #FFFFFF;
-  --color-hover: #895b3a; /* Color al pasar el ratón */
+  --color-hover: #895b3a;
 }
 
-/* Estilos generales */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
-  background-color: var(--color-secundario); /* Fondo de toda la página */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Usamos toda la altura de la ventana */
+  padding: 20px;
+  background-color: var(--color-secundario);
   color: var(--color-primario);
 }
 
-/* Contenedor principal para el logo y el título */
+
+/* Header */
 .header-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--color-primario); /* Fondo de todo el contenedor */
+  background-color: var(--color-primario);
   padding: 20px;
-  margin-bottom: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
 }
 
-/* Contenido del contenedor, logo y título */
 .header-content {
-  display: flex;
   align-items: center;
   gap: 20px;
 }
 
 .admin-logo img {
-  width: 100px; /* Ajusta el tamaño del logo según tus necesidades */
+  width: 100px;
   height: auto;
 }
 
 h1 {
-  color: var(--color-blanco); /* Color blanco para el título */
+  color: var(--color-blanco);
   font-size: 2rem;
   margin: 0;
   font-weight: bold;
@@ -52,10 +46,11 @@ h1 {
 
 /* Filtros */
 .filtros {
-  margin-top: 20px;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 select {
@@ -72,11 +67,12 @@ select:focus {
   border-color: var(--color-hover);
 }
 
-/* Estilo de la tabla */
+/* Tabla */
 .admin-table {
   width: 100%;
-  margin-top: 20px;
+  max-width: 100%;
   border-collapse: collapse;
+  margin-bottom: 30px;
 }
 
 .admin-table th, .admin-table td {
@@ -90,13 +86,13 @@ select:focus {
   color: var(--color-blanco);
 }
 
+/* Botón volver */
 .volver-btn-container {
   text-align: center;
-  margin-top: 20px; /* Espacio entre la tabla y el botón */
 }
 
 .volver-btn-container a {
-  text-decoration: none; /* Elimina el subrayado del enlace */
+  text-decoration: none;
 }
 
 .volver-btn-container .button {
@@ -107,9 +103,7 @@ select:focus {
   border-radius: 20px;
   font-size: 16px;
   cursor: pointer;
-  width: auto;
   transition: background-color 0.3s ease;
-  margin-top: 20px;
 }
 
 .volver-btn-container .button:hover {
@@ -118,4 +112,21 @@ select:focus {
 
 .volver-btn-container .button:active {
   background-color: #6c4b32;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .filtros {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .admin-table th, .admin-table td {
+    font-size: 14px;
+  }
+
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
 }
