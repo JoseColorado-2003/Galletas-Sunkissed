@@ -13,7 +13,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url('../Galletas-Sunkissed/Imagenes/Background.svg');
+  background-image: url('../Imagenes/Background.svg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -60,7 +60,9 @@ form input {
   background-color: var(--color-secundario);
   font-size: 16px;
 }
-
+form input:hover {
+  border: 2px solid var(--color-primario);
+}
 /* Botones */
 .buttons {
   display: flex;
@@ -82,7 +84,8 @@ form input {
 }
 
 .button:hover {
-  box-shadow: inset 0px 2px 2px var(--color-primario);
+  background-color: var(--color-primario);
+  color: var(--color-secundario);
 }
 
 /* Botón de Google */
@@ -109,7 +112,8 @@ form input {
 }
 
 .google-button:hover {
-box-shadow: inset 0px 2px 2px var(--color-primario);
+ background-color: var(--color-primario);
+  color: var(--color-secundario);
 }
 
 .google-button img {

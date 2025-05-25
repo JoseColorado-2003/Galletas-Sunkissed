@@ -10,7 +10,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #FDE9D6; /* Ajustado según imagen */
-    background-image: url('../Galletas-Sunkissed/Imagenes/Background2.svg');
+    background-image: url('../Imagenes/Background2.svg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -157,7 +157,8 @@ body {
 }
 
 .button:hover {
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    background-color:#7B4E29 ;
+    color: #EFD8B1;
 }
 @media (max-width: 768px) {
     body {

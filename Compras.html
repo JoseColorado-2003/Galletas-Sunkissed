@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sunkissed Galletas</title>
-  <link rel="stylesheet" href="../Galletas-Sunkissed/styles/stylescompras.css" />
+  <link rel="stylesheet" href="../Galletas-Sunkissed/stylescompras.css" />
 </head>
 <body>
+      <!-- Header -->
     <section class="header">
         <img src="../Galletas-Sunkissed/Imagenes/Group (1).svg" alt="Logo" class="logo">
         <nav class="nav">
             <a href="#promo">Promociones</a>
-            <a href="#about" onclick="location.href='../Galletas-Sunkissed/'">¿Quiénes somos?</a>
-            <a href="#cookies" id="expandAll" onclick="location.href='../Galletas-Sunkissed/'">Galletas</a>
-            <a href="#compras">Compras</a>
+            <a onclick="location.href='../Galletas-Sunkissed/index.html#about'">¿Quiénes somos?</a>
+            <a href="#cookies" id="expandAll">Galletas</a>
+            <a onclick="location.href='../Galletas-Sunkissed/Compras.html'">Compras</a>
         </nav>
-
-        <button class="button" id="loginButton" onclick="checkLoginStatus()">Ingresar</button>
+           <button class="button" id="loginButton" onclick="checkLoginStatus()">Ingresar</button>
     </section>
 
     <section class="hero reveal reveal-left" id="promo">
@@ -89,8 +89,11 @@
   <!-- Pop-up tarjetas de promociones -->
   <div class="popup-overlay" id="popupOverlay">
     <div class="popup-content">
-      <h2>Promociones</h2>
-      
+<h2 style="font-size: 1.2rem; font-weight: 600; color: burlywood; text-align: center; margin: 1em 0; line-height: 1.5;">
+  🎁 Para activar la promoción: selecciona <strong>tres galletas</strong> de cualquier tipo.<br>
+  Puedes elegir cuántas veces deseas <strong>repetir la promoción</strong>.
+</h2>
+
       <div class="cookie-quantity">
           <span class="quantity-label">Cantidad de Promociones</span>
           <div class="quantity-controls">
@@ -116,9 +119,6 @@
               <button class="qty-btn-positive">+</button>
             </div>
           </div>
-          <div class="card-buttons">
-            <button class="button">Comprar</button>
-          </div>
         </div>
 
         <div class="cookie-card" data-type="Cacao">
@@ -134,9 +134,6 @@
               <span class="qty-number">0</span>
               <button class="qty-btn-positive">+</button>
             </div>
-          </div>
-          <div class="card-buttons">
-            <button class="button">Comprar</button>
           </div>
         </div>
 
@@ -154,9 +151,6 @@
               <button class="qty-btn-positive">+</button>
             </div>
           </div>
-          <div class="card-buttons">
-            <button class="button">Comprar</button>
-          </div>
         </div>
       </div>
       <div class="popup-actions">
@@ -165,25 +159,59 @@
       </div>
     </div>
   </div>
+    <script>
+      // Comprobar si el usuario está logueado usando localStorage
+      function checkLoginStatus() {
+          const usuario = localStorage.getItem('usuarioLogeado');
+          const loginButton = document.getElementById('loginButton');
 
-  <script src="java/compras.js"></script>
-  <script>
-    function checkLoginStatus() {
-        const usuario = localStorage.getItem('usuarioLogeado');
-        const loginButton = document.getElementById('loginButton');
+          if (usuario) {
+              // Si está logueado, cambia el texto y la función del botón
+              const usuarioData = JSON.parse(usuario);
+              loginButton.textContent = 'Ver Perfil';
+              loginButton.onclick = function() {
+                  location.href = 'perfil.html'; // Redirige al perfil del usuario
+              };
+          } else {
+              // Si no está logueado, redirige al login
+              location.href = 'Login.html';
+          }
+      }
 
-        if (usuario) {
-            loginButton.textContent = 'Ver Perfil';
-            loginButton.onclick = function() {
-                location.href = 'perfil.html';
-            };
-        } else {
-            location.href = '../Galletas-Sunkissed/Login.html';
-        }
-    }
-
-    // Revisamos login automáticamente al cargar
-    document.addEventListener('DOMContentLoaded', checkLoginStatus);
   </script>
+      <!-- Footer -->
+    <footer class="footer" id="footer">
+        <img src="../Galletas-Sunkissed/Imagenes/Group (1).svg" alt="Footer logo" class="footer-logo">
+        <div class="footer-section">
+            <h3>Conócenos</h3>
+            <a href="#about">Sobre nosotros</a>
+        </div>
+        <div class="footer-section">
+            <h3>Redes sociales</h3>
+            <a href="https://www.instagram.com/sunkissed_cookies/?igsh=MTkwN2w3bXRlN3RyYw%3D%3D#">Instagram</a>
+        </div>
+        <div class="footer-section">
+            <h3>Mi cuenta</h3>
+            <a href="../Galletas-Sunkissed/Compras.html#cookies">Pedir</a>
+            <a id="loginFooter" href="Login.html">Iniciar sesión</a>
+        </div>
+    </footer>
+  <script src="java/compras.js"></script>
+  <script src="java/posicion.js"></script>
+ <script src="java/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const usuarioLogeado = localStorage.getItem('usuarioLogeado');
+            const loginButton = document.getElementById('loginButton');
+            const loginFooter = document.getElementById('loginFooter');
+
+            if (usuarioLogeado) {
+                loginButton.textContent = 'Ver Perfil';
+                loginButton.onclick = () => location.href = 'perfil.html';
+                loginFooter.textContent = 'Ver Perfil';
+                loginFooter.href = 'perfil.html';
+            }
+        });
+    </script>
 </body>
 </html>

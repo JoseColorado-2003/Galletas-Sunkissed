@@ -10,7 +10,7 @@
         margin: 0;
         padding: 0;
         background-color: var(--color-secundario);
-        background-image: url('../Galletas-Sunkissed/Imagenes/Background2.svg');
+        background-image: url('../Imagenes/Background2.svg');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -57,6 +57,9 @@
         background-color: var(--color-secundario);
         font-size: 16px;
     }
+    input:hover {
+        border: 2px solid var(--color-primario);
+    }
     h2{
         margin: 0 15px;
         text-decoration: none;
@@ -86,7 +89,8 @@
   }
   
   .button:hover {
-    box-shadow: inset 0px 2px 2px var(--color-primario);
+   background-color: var(--color-primario);
+    color: var(--color-secundario);
   }
   
   .button2 {
@@ -129,7 +133,8 @@
     }
 
     .google-button:hover {
-      box-shadow: inset 0px 2px 2px var(--color-primario);
+      background-color: var(--color-primario);
+      color: var(--color-secundario);
     }
 
     .google-button img {

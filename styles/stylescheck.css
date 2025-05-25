@@ -14,7 +14,7 @@
     padding: 20px;
     background-color: var(--color-secundario);
     color: var(--color-primario);
-    background-image: url('../Galletas-Sunkissed/Imagenes/Background.svg');
+    background-image: url('../Imagenes/Background.svg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
