@@ -28,6 +28,7 @@ function actualizarCantidad(galleta, cantidad) {
   return cantidad;
 }
 
+// Controladores para + / - en tarjetas normales
 document.querySelectorAll('.cookie-card .quantity-controls').forEach(control => {
   const btnAdd = control.querySelector('.qty-btn-positive');
   const btnSubtract = control.querySelector('.qty-btn-negative');
@@ -86,8 +87,8 @@ openPopupButton?.addEventListener('click', () => {
   popupOverlay.style.display = 'flex';
 });
 
-const popupCloseButton = popupOverlay?.querySelector(".close-popup");
-popupCloseButton?.addEventListener('click', () => {
+const cancelPopupBtn = document.getElementById('cancelPopup');
+cancelPopupBtn?.addEventListener('click', () => {
   popupOverlay.style.display = 'none';
 });
 
@@ -120,6 +121,7 @@ promoMinus?.addEventListener('click', () => {
   }
 });
 
+// Controladores + / - para cantidades dentro del popup, respetando maxCookies y stock
 popupOverlay?.querySelectorAll(".cookie-card .cookie-quantity").forEach(control => {
   const btnAdd = control.querySelector('.qty-btn-positive');
   const btnSubtract = control.querySelector('.qty-btn-negative');
@@ -152,37 +154,47 @@ popupOverlay?.querySelectorAll(".cookie-card .cookie-quantity").forEach(control 
   });
 });
 
-// ✅ COMPRAR desde el popup sin verificar login
-document.querySelectorAll('.buy-btn').forEach(button => {
-  button.addEventListener('click', () => {
-    const cards = document.querySelectorAll('#popupOverlay .cookie-card');
-    let cantidades = {};
+// COMPRAR desde el popup con botón #confirmPurchase
+const confirmPurchaseBtn = document.getElementById('confirmPurchase');
+confirmPurchaseBtn?.addEventListener('click', () => {
+  const cards = document.querySelectorAll('#popupOverlay .cookie-card');
+  let cantidades = {};
 
-    cards.forEach(card => {
-      const title = card.querySelector('.cookie-title')?.textContent.trim().replace('Galleta ', '');
-      const qtyDisplay = card.querySelector('.qty-number');
-      const qty = qtyDisplay ? parseInt(qtyDisplay.textContent.trim()) : 0;
+  cards.forEach(card => {
+    const title = card.querySelector('.cookie-title')?.textContent.trim().replace('Galleta ', '');
+    const qtyDisplay = card.querySelector('.qty-number');
+    const qty = qtyDisplay ? parseInt(qtyDisplay.textContent.trim()) : 0;
 
-      if (title && qty > 0) {
-        cantidades[title] = qty;
-      }
-    });
-
-    if (Object.keys(cantidades).length === 0) return;
-
-    const params = new URLSearchParams();
-    for (const [nombre, cantidad] of Object.entries(cantidades)) {
-      params.append(nombre, cantidad);
+    if (title && qty > 0) {
+      cantidades[title] = qty;
     }
-
-    window.location.href = "../Galletas-Sunkissed/Check.html?" + params.toString();
   });
+
+  if (Object.keys(cantidades).length === 0) {
+    mostrarMensaje('Selecciona al menos una galleta para comprar.');
+    return;
+  }
+
+  fetch('../Galletas-Sunkissed/guardar_pedido.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(cantidades)
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.status === 'ok') {
+      window.location.href = '../Galletas-Sunkissed/Check.php';
+    } else {
+      mostrarMensaje('Error al guardar el pedido.');
+    }
+  })
+  .catch(() => mostrarMensaje('Error de conexión al guardar el pedido.'));
 });
 
 updateMaxCookies();
 paginaCargada = true;
 
-// ✅ COMPRAR desde tarjetas normales (fuera del popup)
+// COMPRAR desde tarjetas normales (fuera del popup)
 document.querySelectorAll('.cookie-card .buy-btn').forEach(button => {
   button.addEventListener('click', () => {
     const cantidades = {};
@@ -199,17 +211,19 @@ document.querySelectorAll('.cookie-card .buy-btn').forEach(button => {
 
     if (Object.keys(cantidades).length === 0) return;
 
-    const params = new URLSearchParams();
-    for (const [nombre, cantidad] of Object.entries(cantidades)) {
-      params.append(nombre, cantidad);
-    }
-
-    window.location.href = "../Galletas-Sunkissed/Check.html?" + params.toString();
+    fetch('../Galletas-Sunkissed/guardar_pedido.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(cantidades)
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'ok') {
+        window.location.href = '../Galletas-Sunkissed/Check.php';
+      } else {
+        mostrarMensaje('Error al guardar el pedido.');
+      }
+    })
+    .catch(() => mostrarMensaje('Error de conexión al guardar el pedido.'));
   });
-});
-
-const cancelPopupButton = document.getElementById("cancelPopup");
-cancelPopupButton?.addEventListener("click", () => {
-  popupOverlay.style.display = "none";
-  
 });
