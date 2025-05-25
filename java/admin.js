@@ -2,78 +2,69 @@ console.log("El archivo admin.js se está cargando correctamente");
 
 // Cargar los usuarios desde el servidor
 function cargarUsuarios(filtros = {}) {
-  // Validar los filtros antes de usarlos
   const params = new URLSearchParams(filtros);
-
-  // Verificar si los filtros están vacíos antes de agregar el parámetro
   let url = 'obtenerUsuarios.php';
   if (params.toString()) {
     url += `?${params.toString()}`;
   }
 
-  console.log("Solicitud a:", url); // Verifica la URL que se está llamando
-  
+  console.log("Solicitud a:", url);
+
   fetch(url)
-  .then(response => {
-    if (!response.ok) {
-      console.error("Error en la respuesta:", response.statusText);
-      throw new Error("Error en la solicitud");
-    }
-    console.log("Respuesta recibida", response);  // Agrega esta línea para ver la respuesta
-    return response.json();
-  })
-  .then(usuarios => {
-    console.log(usuarios);  // Verifica los datos recibidos
+    .then(response => {
+      if (!response.ok) {
+        console.error("Error en la respuesta:", response.statusText);
+        throw new Error("Error en la solicitud");
+      }
+      return response.json();
+    })
+    .then(usuarios => {
+      console.log("Usuarios recibidos:", usuarios);
 
-    const tbody = document.querySelector('#adminTable tbody');
-    tbody.innerHTML = '';  // Limpiar la tabla antes de agregar los usuarios
+      const tbody = document.querySelector('#adminTable tbody');
+      tbody.innerHTML = ''; // Limpiar tabla
 
-    // Si no hay usuarios, mostrar un mensaje
-    if (usuarios.length === 0) {
-      const tr = document.createElement('tr');
-      tr.innerHTML = '<td colspan="3">No se encontraron usuarios</td>';
-      tbody.appendChild(tr);
-      return; // Salir para no continuar con el forEach
-    }
+      if (!usuarios || usuarios.length === 0) {
+        const tr = document.createElement('tr');
+        tr.innerHTML = '<td colspan="3">No se encontraron usuarios</td>';
+        tbody.appendChild(tr);
+        return;
+      }
 
-    // Agregar los usuarios a la tabla
-    usuarios.forEach(usuario => {
-      const tr = document.createElement('tr');
+      usuarios.forEach(usuario => {
+        const nombre = usuario.IDnombre ?? "Sin nombre";     // Evitar undefined con nullish coalescing
+        const correo = usuario.IDcorreo ?? "Sin correo";
+        const idUsuario = usuario.IDusuario ?? "";            // Id para el botón Compras
 
-      // Crear las celdas con los datos del usuario y botón "Compras"
-      tr.innerHTML = `
-        <td>${usuario.IDnombre}</td>
-        <td>${usuario.IDcorreo}</td>
-        <td>
-          <button onclick="window.location.href='comprasUsuario.html?id=${usuario.IDusuario}'">Compras</button>
-        </td>
-      `;
-
-      tbody.appendChild(tr);  // Agregar la fila a la tabla
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${nombre}</td>
+          <td>${correo}</td>
+          <td>
+            <button onclick="window.location.href='comprasUsuario.html?id=${idUsuario}'">Compras</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    })
+    .catch(error => {
+      console.error('Error al cargar usuarios:', error);
     });
-  })
-  .catch(error => {
-    console.error('Error al cargar usuarios:', error);
-  });
 }
-
-console.log("La función cargarUsuarios está siendo llamada");
 
 // Cargar los filtros de la base de datos
 function cargarFiltros() {
-  fetch('obtenerUsuarios.php')  // Obtener todos los usuarios para los filtros
+  fetch('obtenerUsuarios.php')
     .then(response => response.json())
     .then(usuarios => {
-      // Obtener los valores únicos de nombre y correo para los filtros
       const nombres = new Set();
       const correos = new Set();
 
       usuarios.forEach(usuario => {
-        nombres.add(usuario.IDnombre);
-        correos.add(usuario.IDcorreo);
+        if (usuario.IDnombre) nombres.add(usuario.IDnombre);
+        if (usuario.IDcorreo) correos.add(usuario.IDcorreo);
       });
 
-      // Llenar los filtros con las opciones
       fillSelect('filtroNombre', nombres);
       fillSelect('filtroCorreo', correos);
     })
@@ -85,8 +76,11 @@ function cargarFiltros() {
 // Llenar un select con opciones
 function fillSelect(id, options) {
   const select = document.getElementById(id);
-  if (!select) return;
-  select.innerHTML = `<option value="">Filtrar por ${id === 'filtroNombre' ? 'nombre' : 'correo'}</option>`;  // Limpiar opciones previas
+  if (!select) {
+    console.warn(`No se encontró el elemento select con id '${id}'`);
+    return;
+  }
+  select.innerHTML = `<option value="">Filtrar por ${id === 'filtroNombre' ? 'nombre' : 'correo'}</option>`;
   options.forEach(option => {
     const opt = document.createElement('option');
     opt.value = option;
@@ -95,24 +89,26 @@ function fillSelect(id, options) {
   });
 }
 
-// Aplicar los filtros al cargar la página
+// Aplicar los filtros al cambiar selects
 function aplicarFiltros() {
-  const filtros = {
-    nombre: document.getElementById('filtroNombre').value,
-    correo: document.getElementById('filtroCorreo').value,
-  };
+  const nombre = document.getElementById('filtroNombre')?.value || "";
+  const correo = document.getElementById('filtroCorreo')?.value || "";
 
-  // Filtrar usuarios con base en los filtros seleccionados
-  cargarUsuarios(filtros);
+  cargarUsuarios({ nombre, correo });
 }
 
-// Inicialización
-window.addEventListener('load', function() {
+// Inicialización al cargar la página
+window.addEventListener('load', () => {
   console.log("La página ha cargado correctamente.");
-  cargarUsuarios();  // Cargar los usuarios sin filtros al inicio
-  cargarFiltros();   // Cargar los filtros
+  cargarUsuarios();  // Usuarios sin filtros
+  cargarFiltros();
 
-  // Escuchar cambios en los filtros
-  document.getElementById('filtroNombre').addEventListener('change', aplicarFiltros);
-  document.getElementById('filtroCorreo').addEventListener('change', aplicarFiltros);
+  const filtroNombre = document.getElementById('filtroNombre');
+  const filtroCorreo = document.getElementById('filtroCorreo');
+
+  if (filtroNombre) filtroNombre.addEventListener('change', aplicarFiltros);
+  else console.warn("No existe filtroNombre en el DOM");
+
+  if (filtroCorreo) filtroCorreo.addEventListener('change', aplicarFiltros);
+  else console.warn("No existe filtroCorreo en el DOM");
 });
