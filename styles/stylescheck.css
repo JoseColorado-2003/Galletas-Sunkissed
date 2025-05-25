@@ -97,5 +97,10 @@
     .admin-logo img {
       max-width: 150px;
     }
+    .volver-btn-container {
+  text-align: center;
+  margin-top: 10px;
+}
+
   }
   

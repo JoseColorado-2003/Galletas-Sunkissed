@@ -27,24 +27,28 @@ if ($correo === "admin@hotmail.com" && $contrasena === "admin") {
 }
 
 // Si no es admin, ahora sí verifica en base de datos
-$stmt = $conexion->prepare("SELECT IDnombre, IDcorreo, IDcontraseña FROM usuarios WHERE IDcorreo = ?");
+$stmt = $conexion->prepare("SELECT IDusuario, IDnombre, IDcorreo, IDcontraseña FROM usuarios WHERE IDcorreo = ?");
 $stmt->bind_param("s", $correo);
 $stmt->execute();
 $stmt->store_result();
 
 if ($stmt->num_rows > 0) {
-    $stmt->bind_result($nombre, $correoDB, $contrasenaHash);
+    $stmt->bind_result($idusuario, $nombre, $correoDB, $contrasenaHash);
     $stmt->fetch();
     
     if (password_verify($contrasena, $contrasenaHash)) {
-        // Usuario autenticado correctamente
+        // Guardar sesión PHP
+        $_SESSION['IDusuario'] = $idusuario;
+        $_SESSION['nombre'] = $nombre;
+        $_SESSION['correo'] = $correoDB;
+
         echo "
         <script>
             localStorage.setItem('usuarioLogeado', JSON.stringify({
                 nombre: '$nombre',
                 correo: '$correoDB'
             }));
-            window.location.href = '../Galletas-Sunkissed/index.html';  // Redirige a la página de inicio
+            window.location.href = '../Galletas-Sunkissed/index.html';  
         </script>
         ";
     } else {

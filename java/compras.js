@@ -35,7 +35,8 @@ document.querySelectorAll('.cookie-card .quantity-controls').forEach(control => 
   const qtyDisplay = control.querySelector('.qty-number');
 
   if (btnAdd && qtyDisplay) {
-    btnAdd.addEventListener('click', () => {
+    btnAdd.addEventListener('click', (event) => {
+      event.stopPropagation();
       let currentQty = parseInt(qtyDisplay.textContent) || 0;
       const title = control.closest('.cookie-card')?.querySelector('.cookie-title')?.textContent.trim().replace('Galleta ', '');
       const maxStock = inventario[title] ?? Infinity;
@@ -50,7 +51,8 @@ document.querySelectorAll('.cookie-card .quantity-controls').forEach(control => 
   }
 
   if (btnSubtract && qtyDisplay) {
-    btnSubtract.addEventListener('click', () => {
+    btnSubtract.addEventListener('click', (event) => {
+      event.stopPropagation();
       let currentQty = parseInt(qtyDisplay.textContent) || 0;
       if (currentQty > 0) {
         currentQty--;
@@ -107,14 +109,16 @@ const promoControls = popupOverlay?.querySelector(".cookie-quantity .quantity-co
 const promoPlus = promoControls?.querySelector(".qty-btn-positive");
 const promoMinus = promoControls?.querySelector(".qty-btn-negative");
 
-promoPlus?.addEventListener('click', () => {
+promoPlus?.addEventListener('click', (event) => {
+  event.stopPropagation();
   if (promoCount < 3) {
     promoCount++;
     updateMaxCookies();
   }
 });
 
-promoMinus?.addEventListener('click', () => {
+promoMinus?.addEventListener('click', (event) => {
+  event.stopPropagation();
   if (promoCount > 0) {
     promoCount--;
     updateMaxCookies();
@@ -127,7 +131,8 @@ popupOverlay?.querySelectorAll(".cookie-card .cookie-quantity").forEach(control 
   const btnSubtract = control.querySelector('.qty-btn-negative');
   const qtyDisplay = control.querySelector('.qty-number');
 
-  btnAdd?.addEventListener('click', () => {
+  btnAdd?.addEventListener('click', (event) => {
+    event.stopPropagation();
     const currentQty = parseInt(qtyDisplay.textContent);
     const title = control.closest('.cookie-card')?.querySelector('.cookie-title')?.textContent.trim().replace('Galleta ', '');
     const maxStock = inventario[title] ?? Infinity;
@@ -146,7 +151,8 @@ popupOverlay?.querySelectorAll(".cookie-card .cookie-quantity").forEach(control 
     }
   });
 
-  btnSubtract?.addEventListener('click', () => {
+  btnSubtract?.addEventListener('click', (event) => {
+    event.stopPropagation();
     const currentQty = parseInt(qtyDisplay.textContent);
     if (currentQty > 0) {
       qtyDisplay.textContent = currentQty - 1;
@@ -166,7 +172,7 @@ confirmPurchaseBtn?.addEventListener('click', () => {
     const qty = qtyDisplay ? parseInt(qtyDisplay.textContent.trim()) : 0;
 
     if (title && qty > 0) {
-      cantidades[title] = qty;
+      cantidades[title.toLowerCase()] = qty;
     }
   });
 
@@ -185,10 +191,14 @@ confirmPurchaseBtn?.addEventListener('click', () => {
     if (data.status === 'ok') {
       window.location.href = '../Galletas-Sunkissed/Check.php';
     } else {
-      mostrarMensaje('Error al guardar el pedido.');
+      mostrarMensaje('Error al guardar el pedido: ' + data.message);
+      console.error('Error detalle:', data.message);
     }
   })
-  .catch(() => mostrarMensaje('Error de conexión al guardar el pedido.'));
+  .catch(error => {
+    mostrarMensaje('Error en la solicitud: ' + error);
+    console.error('Fetch error:', error);
+  });
 });
 
 updateMaxCookies();
@@ -205,7 +215,7 @@ document.querySelectorAll('.cookie-card .buy-btn').forEach(button => {
       const qty = qtyDisplay ? parseInt(qtyDisplay.textContent.trim()) || 0 : 0;
 
       if (title && qty > 0) {
-        cantidades[title] = qty;
+        cantidades[title.toLowerCase()] = qty;
       }
     });
 

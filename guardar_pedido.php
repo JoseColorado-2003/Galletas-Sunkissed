@@ -1,77 +1,64 @@
 <?php
 session_start();
-header('Content-Type: application/json');
 
-$host = "localhost";
-$db = "galletassunkissed";
-$user = "tu_usuario";     // <-- Ajusta aquí tu usuario
-$pass = "tu_contraseña";  // <-- Ajusta aquí tu contraseña
+// Datos de conexión
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "galletassunkissed";
 
-$conn = new mysqli($host, $user, $pass, $db);
-
-if ($conn->connect_error) {
-    echo json_encode([
-        "status" => "error",
-        "message" => "Error conexión BD: " . $conn->connect_error
-    ]);
+$conexion = new mysqli($servername, $username, $password, $dbname);
+if ($conexion->connect_error) {
+    echo json_encode(['status' => 'error', 'message' => 'Error de conexión a la base de datos.']);
     exit;
 }
 
 if (!isset($_SESSION['IDusuario'])) {
-    echo json_encode([
-        "status" => "error",
-        "message" => "No estás autenticado."
-    ]);
+    echo json_encode(['status' => 'error', 'message' => 'No hay sesión activa.']);
     exit;
 }
 
-$IDusuario = intval($_SESSION['IDusuario']);
-$galletasPermitidas = ["Chips", "Cacao", "Queso"];
-$datos = [];
+// Recoger datos POST
+$chips = isset($_POST['chips']) ? intval($_POST['chips']) : 0;
+$cacao = isset($_POST['cacao']) ? intval($_POST['cacao']) : 0;
+$queso = isset($_POST['queso']) ? intval($_POST['queso']) : 0;
 
-foreach ($galletasPermitidas as $galleta) {
-    if (isset($_POST[$galleta])) {
-        $cantidad = intval($_POST[$galleta]);
-        if ($cantidad > 0) {
-            $datos[$galleta] = $cantidad;
+$idUsuario = $_SESSION['IDusuario'];
+
+$stmt = $conexion->prepare("INSERT INTO compras (IDusuario, fecha_compra, galleta, cantidad, realizo_compra) VALUES (?, NOW(), ?, ?, 1)");
+if (!$stmt) {
+    echo json_encode(['status' => 'error', 'message' => 'Error en la preparación de la consulta.']);
+    exit;
+}
+
+$tipos = ['Chips' => $chips, 'Cacao' => $cacao, 'Queso' => $queso];
+foreach ($tipos as $galleta => $cantidad) {
+    if ($cantidad > 0) {
+        $stmt->bind_param("isi", $idUsuario, $galleta, $cantidad);
+        if (!$stmt->execute()) {
+            echo json_encode(['status' => 'error', 'message' => 'Error al guardar el pedido.']);
+            exit;
         }
     }
 }
 
-if (empty($datos)) {
-    echo json_encode([
-        "status" => "error",
-        "message" => "No hay productos para comprar."
-    ]);
-    exit;
-}
-
-$stmt = $conn->prepare("INSERT INTO compras (IDusuario, galleta, cantidad, realizo_compra) VALUES (?, ?, ?, TRUE)");
-
-if (!$stmt) {
-    echo json_encode([
-        "status" => "error",
-        "message" => "Error al preparar la consulta: " . $conn->error
-    ]);
-    exit;
-}
-
-foreach ($datos as $galleta => $cantidad) {
-    $stmt->bind_param("isi", $IDusuario, $galleta, $cantidad);
-    if (!$stmt->execute()) {
-        echo json_encode([
-            "status" => "error",
-            "message" => "Error al ejecutar la consulta: " . $stmt->error
-        ]);
-        $stmt->close();
-        $conn->close();
-        exit;
-    }
-}
-
 $stmt->close();
-$conn->close();
+$conexion->close();
 
-echo json_encode([
-    "status" => "ok"
-]);
+// Guardar en sesión el pedido para check.php
+$_SESSION['pedido'] = [
+    'chips' => $chips,
+    'cacao' => $cacao,
+    'queso' => $queso
+];
+
+$_SESSION['usuario'] = [
+    'nombre' => $_SESSION['nombre'],
+    'correo' => $_SESSION['correo']
+];
+
+// IMPORTANTE: no hagas redirección desde PHP cuando usas fetch
+// Solo responde con JSON para que JS maneje la redirección
+echo json_encode(['status' => 'ok']);
+exit;
+?>
