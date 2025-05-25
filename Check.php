@@ -12,7 +12,7 @@ $usuario = $_SESSION['usuario'];
 $pedido = $_SESSION['pedido'];
 
 // CAMBIA ESTE NÚMERO al número real de WhatsApp
-$numero_whatsapp = "521XXXXXXXXXX"; // ejemplo: 5215551234567
+$numero_whatsapp = "573173599389"; // ejemplo: 5215551234567
 
 $mensaje = "Hola! Quiero confirmar mi pedido:\n"
          . "👤 *Nombre:* " . $usuario['nombre'] . "\n"
