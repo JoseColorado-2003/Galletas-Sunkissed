@@ -1,5 +1,7 @@
 <?php
-// Usamos la misma base de datos 'galletassunkissed' que en el login.php
+header('Content-Type: application/json');
+
+// Conexión a la base de datos
 $conexion = new mysqli("localhost", "root", "", "galletassunkissed");
 
 // Verificar la conexión
@@ -9,14 +11,12 @@ if ($conexion->connect_error) {
     exit();
 }
 
-// Obtener los filtros de la URL
-$nombre = isset($_GET['nombre']) ? $_GET['nombre'] : '';
-$correo = isset($_GET['correo']) ? $_GET['correo'] : '';
-$galleta = isset($_GET['galleta']) ? $_GET['galleta'] : '';
-$cantidad = isset($_GET['cantidad']) ? $_GET['cantidad'] : '';
+// Obtener filtros de la URL (solo nombre y correo, ya no galleta ni cantidad)
+$nombre = isset($_GET['nombre']) ? $conexion->real_escape_string($_GET['nombre']) : '';
+$correo = isset($_GET['correo']) ? $conexion->real_escape_string($_GET['correo']) : '';
 
-// Crear la consulta con los filtros
-$sql = "SELECT IDusuario, IDnombre, IDcorreo, galleta, cantidad FROM usuarios WHERE 1";
+// Consulta SQL base (sin galleta ni cantidad)
+$sql = "SELECT IDusuario, IDnombre, IDcorreo FROM usuarios WHERE 1";
 
 if ($nombre) {
     $sql .= " AND IDnombre LIKE '%$nombre%'";
@@ -24,30 +24,28 @@ if ($nombre) {
 if ($correo) {
     $sql .= " AND IDcorreo LIKE '%$correo%'";
 }
-if ($galleta) {
-    $sql .= " AND galleta LIKE '%$galleta%'";
-}
-if ($cantidad) {
-    $sql .= " AND cantidad = '$cantidad'";
-}
 
-// Ejecutar la consulta
+// Ejecutar consulta
 $resultado = $conexion->query($sql);
 
 $usuarios = [];
 
-// Verificar si se encontraron usuarios
-if ($resultado->num_rows > 0) {
-    while ($fila = $resultado->fetch_assoc()) {
-        $usuarios[] = $fila;
+if ($resultado) {
+    if ($resultado->num_rows > 0) {
+        while ($fila = $resultado->fetch_assoc()) {
+            $usuarios[] = $fila;
+        }
     }
+    // Si no hay usuarios, devolvemos un array vacío (mejor que mensaje)
 } else {
-    echo json_encode(["mensaje" => "No se encontraron usuarios"]);
+    // Error en la consulta SQL
+    http_response_code(500);
+    echo json_encode(["error" => "Error en la consulta SQL"]);
+    $conexion->close();
+    exit();
 }
 
 $conexion->close();
 
-// Devolver los datos en formato JSON
-header('Content-Type: application/json');
 echo json_encode($usuarios);
 ?>
